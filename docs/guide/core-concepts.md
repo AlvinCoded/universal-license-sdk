@@ -158,7 +158,7 @@ A Pro license might not have `sso` feature, while an Enterprise license would.
 **JavaScript:**
 
 ```javascript
-import { FeatureGate } from '@universal-license/react';
+import { FeatureGate } from '@unilic/react';
 
 <FeatureGate feature="advancedReporting">
     <ReportingDashboard />
@@ -511,7 +511,7 @@ const isValidOffline = await client.validation.isValidCached(licenseKey);
 For maximum security, verify RSA signature:
 
 ```javascript
-import { verifySignature } from '@universal-license/client';
+import { verifySignature } from '@unilic/client';
 
 if (
   await verifySignature(

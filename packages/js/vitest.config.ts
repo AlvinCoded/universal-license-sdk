@@ -15,7 +15,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@universal-license/core': path.resolve(__dirname, '../core/src'),
+      '@unilic/core': path.resolve(__dirname, '../core/src'),
     },
   },
 });

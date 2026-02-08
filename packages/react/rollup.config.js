@@ -6,8 +6,8 @@ import dts from 'rollup-plugin-dts';
 const external = [
   'react',
   'react/jsx-runtime',
-  '@universal-license/client',
-  '@universal-license/core',
+  '@unilic/client',
+  '@unilic/core',
 ];
 
 export default [

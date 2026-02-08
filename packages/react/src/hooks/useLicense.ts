@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLicenseContext } from '../context/LicenseContext';
-import type { License } from '@universal-license/client';
+import type { License } from '@unilic/client';
 
 /**
  * useLicense Hook

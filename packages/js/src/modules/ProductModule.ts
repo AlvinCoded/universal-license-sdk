@@ -7,8 +7,8 @@ import type {
   SubscriptionPlan,
   UpdatePlanRequest,
   UpdateProductRequest,
-} from '@universal-license/core';
-import { API_ENDPOINTS, CACHE_KEYS, DEFAULT_CONFIG } from '@universal-license/core';
+} from '@unilic/core';
+import { API_ENDPOINTS, CACHE_KEYS, DEFAULT_CONFIG } from '@unilic/core';
 
 /**
  * Product and subscription plan operations

@@ -5,7 +5,7 @@ import dts from 'rollup-plugin-dts';
 
 const external = [
   'axios',
-  '@universal-license/core',
+  '@unilic/core',
   'crypto',
   'os'
 ];

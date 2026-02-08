@@ -243,7 +243,7 @@ composer require --dev friendsofphp/php-cs-fixer
 ### JavaScript/TypeScript
 
 ```
-@universal-license/client
+@unilic/client
 ├── guzzlehttp/guzzle (only for Node.js)
 ├── axios (alternative, if configured)
 └── crypto (native)
@@ -252,8 +252,8 @@ composer require --dev friendsofphp/php-cs-fixer
 ### React
 
 ```
-@universal-license/react
-├── @universal-license/client
+@unilic/react
+├── @unilic/client
 ├── react (peer dependency)
 └── react-dom (peer dependency)
 ```
@@ -286,10 +286,10 @@ node --version
 npm --version
 
 # Install and test
-npm install @universal-license/client
+npm install @unilic/client
 
 # Verify
-node -e "const {LicenseClient} = require('@universal-license/client'); console.log('✅ SDK loaded')"
+node -e "const {LicenseClient} = require('@unilic/client'); console.log('✅ SDK loaded')"
 ```
 
 ### React
@@ -299,10 +299,10 @@ node -e "const {LicenseClient} = require('@universal-license/client'); console.l
 npm list react react-dom
 
 # Verify installation
-npm install @universal-license/react
+npm install @unilic/react
 
 # Test import
-node -e "const {useLicenseValidation} = require('@universal-license/react'); console.log('✅ React SDK loaded')"
+node -e "const {useLicenseValidation} = require('@unilic/react'); console.log('✅ React SDK loaded')"
 ```
 
 ### PHP

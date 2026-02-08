@@ -84,7 +84,7 @@ Yes. The SDK supports Node.js.
 
 ## Does the React package replace the client package?
 
-No. `@universal-license/react` is a thin wrapper around `@universal-license/client`.
+No. `@unilic/react` is a thin wrapper around `@unilic/client`.
 
 ## How do I authenticate admin calls?
 
@@ -96,7 +96,7 @@ client.setToken(token);
 
 ## Where are the TypeScript types?
 
-Types are exported from `@universal-license/core` and re-exported by `@universal-license/client`.
+Types are exported from `@unilic/core` and re-exported by `@unilic/client`.
 
 See `/api/types`.
 

@@ -1,13 +1,9 @@
 import type { HttpClient } from '../http/HttpClient';
 import type { LicenseCache } from '../cache/LicenseCache';
-import type {
-  LicenseTier,
-  ValidateLicenseRequest,
-  ValidateLicenseResponse,
-} from '@universal-license/core';
-import type { PublicKeySetResponse } from '@universal-license/core';
-import { API_ENDPOINTS } from '@universal-license/core';
-import { DeviceFingerprint } from '@universal-license/core';
+import type { LicenseTier, ValidateLicenseRequest, ValidateLicenseResponse } from '@unilic/core';
+import type { PublicKeySetResponse } from '@unilic/core';
+import { API_ENDPOINTS } from '@unilic/core';
+import { DeviceFingerprint } from '@unilic/core';
 
 /**
  * License validation operations

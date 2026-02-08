@@ -51,7 +51,7 @@ npx tsx examples/purchase-flow.ts
 **Integration:**
 
 ```tsx
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 import { LicenseOnboarding, FeatureGuard } from './examples/react-integration';
 
 // Use in your React app
@@ -135,7 +135,7 @@ LICENSE_API_URL=http://localhost:3001/api
 ### Initialize Client
 
 ```typescript
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: process.env.LICENSE_API_URL || 'http://localhost:3001/api',
@@ -147,7 +147,7 @@ const client = new LicenseClient({
 ### Validate License
 
 ```typescript
-import { DeviceFingerprint } from '@universal-license/client';
+import { DeviceFingerprint } from '@unilic/client';
 
 const deviceId = await DeviceFingerprint.generate();
 const result = await client.validation.validate({
@@ -227,7 +227,7 @@ npx tsx examples/basic-usage.ts
 
 When integrating the SDK into your application:
 
-- [ ] Install SDK: `npm install @universal-license/client`
+- [ ] Install SDK: `npm install @unilic/client`
 - [ ] Configure baseUrl in environment variables
 - [ ] Initialize LicenseClient
 - [ ] Implement license validation on app startup

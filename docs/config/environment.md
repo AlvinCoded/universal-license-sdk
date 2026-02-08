@@ -65,7 +65,7 @@ VITE_LICENSE_DEBUG=false
 Access in your code using `import.meta.env`:
 
 ```typescript
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: import.meta.env.VITE_LICENSE_SERVER_URL,
@@ -90,7 +90,7 @@ REACT_APP_LICENSE_DEBUG=false
 Access using `process.env`:
 
 ```jsx
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: process.env.REACT_APP_LICENSE_SERVER_URL,
@@ -136,7 +136,7 @@ Load it at the very top of your application:
 
 ```typescript
 import 'dotenv/config';
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: process.env.LICENSE_SERVER_URL,

@@ -31,9 +31,9 @@
     /* Path Mapping (for monorepo) */
     "baseUrl": ".",
     "paths": {
-      "@universal-license/core": ["packages/core/src"],
-      "@universal-license/client": ["packages/js/src"],
-      "@universal-license/react": ["packages/react/src"]
+      "@unilic/core": ["packages/core/src"],
+      "@unilic/client": ["packages/js/src"],
+      "@unilic/react": ["packages/react/src"]
     }
   },
   "exclude": [

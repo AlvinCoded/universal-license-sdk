@@ -1,10 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useLicenseContext } from '../context/LicenseContext';
-import type {
-  DatabaseHealthResponse,
-  EmailStatusResponse,
-  HealthResponse,
-} from '@universal-license/client';
+import type { DatabaseHealthResponse, EmailStatusResponse, HealthResponse } from '@unilic/client';
 
 export function useHealth(options?: { auto?: boolean }) {
   const { client } = useLicenseContext();

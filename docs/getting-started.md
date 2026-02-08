@@ -40,26 +40,26 @@ Choose your preferred package manager:
 
 ```bash [npm]
 # JavaScript/TypeScript SDK
-npm install @universal-license/client
+npm install @unilic/client
 
 # React hooks and components (optional)
-npm install @universal-license/react @universal-license/client
+npm install @unilic/react @unilic/client
 ```
 
 ```bash [pnpm]
 # JavaScript/TypeScript SDK
-pnpm add @universal-license/client
+pnpm add @unilic/client
 
 # React hooks and components (optional)
-pnpm add @universal-license/react @universal-license/client
+pnpm add @unilic/react @unilic/client
 ```
 
 ```bash [yarn]
 # JavaScript/TypeScript SDK
-yarn add @universal-license/client
+yarn add @unilic/client
 
 # React hooks and components (optional)
-yarn add @universal-license/react @universal-license/client
+yarn add @unilic/react @unilic/client
 ```
 
 :::
@@ -69,7 +69,7 @@ yarn add @universal-license/react @universal-license/client
 ### Step 1: Initialize the Client
 
 ```typescript
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: 'https://your-license-server.com/api',
@@ -84,7 +84,7 @@ const client = new LicenseClient({
 ### Step 2: Generate Device Fingerprint
 
 ```typescript
-import { DeviceFingerprint } from '@universal-license/client';
+import { DeviceFingerprint } from '@unilic/client';
 
 // Generate unique device identifier
 const deviceId = await DeviceFingerprint.generate();
@@ -132,7 +132,7 @@ Here's a complete example of integrating license validation into your applicatio
 
 ```typescript
 // src/onboarding.ts
-import { LicenseClient, DeviceFingerprint } from '@universal-license/client';
+import { LicenseClient, DeviceFingerprint } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: process.env.VITE_LICENSE_API_URL!,
@@ -203,7 +203,7 @@ document.getElementById('activateButton')?.addEventListener('click', async () =>
 For React applications, use the provided hooks for a cleaner implementation:
 
 ```tsx
-import { LicenseProvider, useLicenseValidation } from '@universal-license/react';
+import { LicenseProvider, useLicenseValidation } from '@unilic/react';
 
 // Wrap your app
 function App() {

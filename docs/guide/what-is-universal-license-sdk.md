@@ -135,7 +135,7 @@ Comprehensive error types for different scenarios:
 ### JavaScript/TypeScript
 
 ```javascript
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: 'https://your-license-server.com/api',
@@ -158,7 +158,7 @@ if (validation.valid) {
 ### React
 
 ```jsx
-import { useLicenseValidation } from '@universal-license/react';
+import { useLicenseValidation } from '@unilic/react';
 
 export function App() {
   const { validation, loading, error, validate } = useLicenseValidation();
@@ -253,10 +253,10 @@ Each module is **optional** - import only what you need:
 
 ```javascript
 // Import just validation
-import { ValidationModule } from '@universal-license/client';
+import { ValidationModule } from '@unilic/client';
 
 // Or the full client
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 ```
 
 ## Next Steps

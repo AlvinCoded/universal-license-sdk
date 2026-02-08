@@ -1,6 +1,6 @@
 import { createContext, useContext, useMemo, ReactNode } from 'react';
-import { LicenseClient } from '@universal-license/client';
-import type { SDKConfig } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
+import type { SDKConfig } from '@unilic/client';
 
 /**
  * License Context
@@ -24,7 +24,7 @@ interface LicenseProviderProps {
  *
  * @example
  * ```tsx
- * import { LicenseProvider } from '@universal-license/react';
+ * import { LicenseProvider } from '@unilic/react';
  *
  * function App() {
  *   return (

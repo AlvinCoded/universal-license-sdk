@@ -30,7 +30,7 @@ A server fingerprint might use:
 ### JavaScript/Browser
 
 ```javascript
-import { DeviceFingerprint } from '@universal-license/client';
+import { DeviceFingerprint } from '@unilic/client';
 
 // Generate device fingerprint for current browser
 const deviceId = await DeviceFingerprint.generate();
@@ -46,7 +46,7 @@ the same ID. Clearing browser data (cache, cookies) or significantly changing yo
 ### Node.js
 
 ```javascript
-import { DeviceFingerprint } from '@universal-license/client';
+import { DeviceFingerprint } from '@unilic/client';
 
 // Generate device fingerprint for server
 const deviceId = DeviceFingerprint.generate();

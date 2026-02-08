@@ -1,5 +1,5 @@
-import type { LicenseTier, SDKConfig } from '@universal-license/core';
-import { DEFAULT_CONFIG } from '@universal-license/core';
+import type { LicenseTier, SDKConfig } from '@unilic/core';
+import { DEFAULT_CONFIG } from '@unilic/core';
 
 import { HttpClient } from './http/HttpClient';
 import { LicenseModule } from './modules/LicenseModule';
@@ -29,7 +29,7 @@ import type { StorageAdapter } from './storage';
  *
  * @example Basic Usage
  * ```typescript
- * import { LicenseClient } from '@universal-license/client';
+ * import { LicenseClient } from '@unilic/client';
  *
  * const client = new LicenseClient({
  *   baseUrl: 'https://license.yourcompany.com/api',
@@ -192,7 +192,7 @@ export class LicenseClient {
    *
    * @example
    * ```typescript
-   * import { LicenseClient, DeviceFingerprint } from '@universal-license/client';
+   * import { LicenseClient, DeviceFingerprint } from '@unilic/client';
    *
    * const client = new LicenseClient({
    *   baseUrl: 'https://license.yourcompany.com/api'

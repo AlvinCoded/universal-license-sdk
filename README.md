@@ -12,9 +12,9 @@ This monorepo contains multiple packages for different languages and frameworks:
 
 | Package                                      | Description                | Version                                                                                                                        | Docs                           |
 | -------------------------------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------ |
-| [@universal-license/core](packages/core)     | Shared types and utilities | [![npm](https://img.shields.io/npm/v/@universal-license/core)](https://www.npmjs.com/package/@universal-license/core)          | [📖](packages/core/README.md)  |
-| [@universal-license/client](packages/js)     | JavaScript/TypeScript SDK  | [![npm](https://img.shields.io/npm/v/@universal-license/client)](https://www.npmjs.com/package/@universal-license/client)      | [📖](packages/js/README.md)    |
-| [@universal-license/react](packages/react)   | React hooks and components | [![npm](https://img.shields.io/npm/v/@universal-license/react)](https://www.npmjs.com/package/@universal-license/react)        | [📖](packages/react/README.md) |
+| [@unilic/core](packages/core)                | Shared types and utilities | [![npm](https://img.shields.io/npm/v/@unilic/core)](https://www.npmjs.com/package/@unilic/core)                                | [📖](packages/core/README.md)  |
+| [@unilic/client](packages/js)                | JavaScript/TypeScript SDK  | [![npm](https://img.shields.io/npm/v/@unilic/client)](https://www.npmjs.com/package/@unilic/client)                            | [📖](packages/js/README.md)    |
+| [@unilic/react](packages/react)              | React hooks and components | [![npm](https://img.shields.io/npm/v/@unilic/react)](https://www.npmjs.com/package/@unilic/react)                              | [📖](packages/react/README.md) |
 | [universal-license-php-client](packages/php) | PHP SDK                    | [![Packagist](https://img.shields.io/packagist/v/universal-license-php)](https://packagist.org/packages/universal-license-php) | [📖](packages/php/README.md)   |
 
 ## Quick Start
@@ -22,13 +22,13 @@ This monorepo contains multiple packages for different languages and frameworks:
 ### JavaScript/TypeScript
 
 ```bash
-npm install @universal-license/client
+npm install @unilic/client
 # or
-pnpm add @universal-license/client
+pnpm add @unilic/client
 ```
 
 ```typescript
-import { LicenseClient, DeviceFingerprint } from '@universal-license/client';
+import { LicenseClient, DeviceFingerprint } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: 'https://your-license-server.com/api',
@@ -48,11 +48,11 @@ if (result.valid) {
 ### React
 
 ```bash
-npm install @universal-license/react @universal-license/client
+npm install @unilic/react @unilic/client
 ```
 
 ```tsx
-import { LicenseProvider, useLicenseValidation } from '@universal-license/react';
+import { LicenseProvider, useLicenseValidation } from '@unilic/react';
 
 function App() {
   return (
@@ -97,15 +97,15 @@ pnpm run lint
 pnpm run link:local
 
 # In your app (choose one)
-npm link @universal-license/client
-pnpm link --global @universal-license/client
+npm link @unilic/client
+pnpm link --global @unilic/client
 ```
 
 Unlink:
 
 ```bash
-npm unlink @universal-license/client
-pnpm unlink --global @universal-license/client
+npm unlink @unilic/client
+pnpm unlink --global @unilic/client
 ```
 
 ## 🤝 Contributing

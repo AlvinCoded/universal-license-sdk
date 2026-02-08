@@ -29,7 +29,7 @@ echo ""
 PACKAGES=("core" "js" "react")
 
 for package in "${PACKAGES[@]}"; do
-    echo -e "${BLUE}🔨 Building @universal-license/${package}...${NC}"
+    echo -e "${BLUE}🔨 Building @unilic/${package}...${NC}"
     
     if [ -d "packages/${package}" ]; then
         cd "packages/${package}"
@@ -50,7 +50,7 @@ for package in "${PACKAGES[@]}"; do
             exit 1
         }
         
-        echo -e "${GREEN}✓ @universal-license/${package} built successfully${NC}"
+        echo -e "${GREEN}✓ @unilic/${package} built successfully${NC}"
         echo ""
         
         cd ../..
@@ -63,7 +63,7 @@ echo ""
 echo -e "${GREEN}✅ All packages built successfully!${NC}"
 echo ""
 echo "📦 Built packages:"
-echo "  • @universal-license/core      → packages/core/dist/"
-echo "  • @universal-license/client    → packages/js/dist/"
-echo "  • @universal-license/react     → packages/react/dist/"
+echo "  • @unilic/core      → packages/core/dist/"
+echo "  • @unilic/client    → packages/js/dist/"
+echo "  • @unilic/react     → packages/react/dist/"
 echo ""

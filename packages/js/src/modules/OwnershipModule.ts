@@ -1,5 +1,5 @@
 import type { HttpClient } from '../http/HttpClient';
-import { API_ENDPOINTS } from '@universal-license/core';
+import { API_ENDPOINTS } from '@unilic/core';
 import type {
   LicenseOwnershipStatusResponse,
   ClaimLicenseOwnerRequest,
@@ -8,7 +8,7 @@ import type {
   CreateLicenseInviteResponse,
   RedeemLicenseInviteRequest,
   RedeemLicenseInviteResponse,
-} from '@universal-license/core';
+} from '@unilic/core';
 
 /**
  * Ownership & invite operations for app onboarding.

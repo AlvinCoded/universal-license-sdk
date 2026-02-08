@@ -65,7 +65,7 @@ if (hasAllAnalytics) {
 ### React with Hooks
 
 ```jsx
-import { useFeatureFlag } from '@universal-license/react';
+import { useFeatureFlag } from '@unilic/react';
 
 export function Dashboard() {
   const hasAdvancedReporting = useFeatureFlag('advancedReporting');
@@ -95,7 +95,7 @@ The `useFeatureFlag` hook checks the current license and returns whether that fe
 ### React with Components
 
 ```jsx
-import { FeatureGate } from '@universal-license/react';
+import { FeatureGate } from '@unilic/react';
 
 export function Dashboard() {
   return (

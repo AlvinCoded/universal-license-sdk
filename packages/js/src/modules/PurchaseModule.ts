@@ -5,8 +5,8 @@ import type {
   PurchaseOrder,
   CompletePurchaseRequest,
   CompletePurchaseResponse,
-} from '@universal-license/core';
-import { API_ENDPOINTS } from '@universal-license/core';
+} from '@unilic/core';
+import { API_ENDPOINTS } from '@unilic/core';
 
 /**
  * Purchase and subscription operations

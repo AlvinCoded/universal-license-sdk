@@ -72,7 +72,7 @@ interface ValidateLicenseResponse {
 **Example: Basic Validation**
 
 ```typescript
-import { LicenseClient, DeviceFingerprint } from '@universal-license/client';
+import { LicenseClient, DeviceFingerprint } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: 'https://license-server.com/api',
@@ -154,13 +154,12 @@ This is an “offline-friendly” check (it does not cryptographically prevent t
 If your server returns a signature and provides a public key endpoint, you can verify the signature
 locally.
 
-The SDK exports `verifySignature(...)` from `@universal-license/core` and re-exports it from
-`@universal-license/client`.
+The SDK exports `verifySignature(...)` from `@unilic/core` and re-exports it from `@unilic/client`.
 
 Example:
 
 ```ts
-import { verifySignature } from '@universal-license/client';
+import { verifySignature } from '@unilic/client';
 
 // The payload must exactly match what the server signed.
 const payload = JSON.stringify({

@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 import { useLicenseContext } from '../context/LicenseContext';
-import { DeviceFingerprint } from '@universal-license/client';
-import type { LicenseTier, ValidateLicenseResponse } from '@universal-license/client';
+import { DeviceFingerprint } from '@unilic/client';
+import type { LicenseTier, ValidateLicenseResponse } from '@unilic/client';
 
 /**
  * useLicenseValidation Hook

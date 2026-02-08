@@ -246,7 +246,7 @@ const completedOrders = orders.filter((o) => o.status === 'completed');
 Handle various failure scenarios:
 
 ```javascript
-import { PurchaseError, NetworkError } from '@universal-license/client';
+import { PurchaseError, NetworkError } from '@unilic/client';
 
 async function handlePurchaseError(error, order) {
   if (error instanceof PurchaseError) {
@@ -311,8 +311,8 @@ app.post('/webhook/payment', async (req, res) => {
 
 ```jsx
 import { useState } from 'react';
-import { usePurchase } from '@universal-license/react';
-import { PurchaseError } from '@universal-license/client';
+import { usePurchase } from '@unilic/react';
+import { PurchaseError } from '@unilic/client';
 
 export function PurchaseFlow({ planCode, onSuccess }) {
   const [step, setStep] = useState('organization'); // organization, payment, complete

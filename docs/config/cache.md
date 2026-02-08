@@ -4,7 +4,7 @@ Caching improves performance by reducing repeated network calls.
 
 This page documents how caching behaves in the SDK packages in this repository.
 
-## JavaScript/TypeScript (`@universal-license/client`)
+## JavaScript/TypeScript (`@unilic/client`)
 
 ### What is cached
 
@@ -15,7 +15,7 @@ This page documents how caching behaves in the SDK packages in this repository.
 ### Configuration
 
 ```ts
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: 'https://license.example.com/api',

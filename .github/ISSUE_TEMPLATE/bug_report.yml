@@ -14,10 +14,10 @@ body:
       label: Package
       description: Which package is affected?
       options:
-        - packages/js (@universal-license/client)
-        - packages/react (@universal-license/react)
+        - packages/js (@unilic/client)
+        - packages/react (@unilic/react)
         - packages/php
-        - packages/core (@universal-license/core)
+        - packages/core (@unilic/core)
         - docs
         - other / not sure
     validations:

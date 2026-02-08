@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll, afterAll, vi } from 'vitest';
 import { LicenseClient } from '../../src/LicenseClient';
-import { DeviceFingerprint } from '@universal-license/core';
+import { DeviceFingerprint } from '@unilic/core';
 
 /**
  * Integration tests for LicenseClient

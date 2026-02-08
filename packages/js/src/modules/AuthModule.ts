@@ -5,7 +5,7 @@ import type {
   VerifyResponse,
   UpdateProfileRequest,
   UpdateProfileResponse,
-} from '@universal-license/core';
+} from '@unilic/core';
 
 /**
  * Auth operations

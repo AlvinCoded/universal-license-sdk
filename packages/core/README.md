@@ -1,15 +1,15 @@
-# @universal-license/core
+# @unilic/core
 
 Core types, utilities, and constants for Universal License SDK.
 
 ## Installation
 
 ```bash
-npm install @universal-license/core
+npm install @unilic/core
 # or
-pnpm add @universal-license/core
+pnpm add @unilic/core
 # or
-yarn add @universal-license/core
+yarn add @unilic/core
 ```
 
 ## Usage
@@ -17,7 +17,7 @@ yarn add @universal-license/core
 ### Import Types
 
 ```typescript
-import type { License, ValidateLicenseRequest, SubscriptionPlan } from '@universal-license/core';
+import type { License, ValidateLicenseRequest, SubscriptionPlan } from '@unilic/core';
 
 const license: License = {
   id: 1,
@@ -29,7 +29,7 @@ const license: License = {
 ### Use Utilities
 
 ```typescript
-import { DeviceFingerprint, isValidLicenseKey, daysUntilExpiry } from '@universal-license/core';
+import { DeviceFingerprint, isValidLicenseKey, daysUntilExpiry } from '@unilic/core';
 
 // Generate device fingerprint
 const deviceId = await DeviceFingerprint.generate();
@@ -47,7 +47,7 @@ console.log(`License expires in ${days} days`);
 ### Use Constants
 
 ```typescript
-import { LICENSE_TIERS, LICENSE_STATUS, ERROR_CODES } from '@universal-license/core';
+import { LICENSE_TIERS, LICENSE_STATUS, ERROR_CODES } from '@unilic/core';
 
 // Check tier hierarchy
 if (LICENSE_TIER_HIERARCHY[userTier] >= LICENSE_TIER_HIERARCHY['pro']) {

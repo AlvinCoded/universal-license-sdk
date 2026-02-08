@@ -7,19 +7,19 @@ Choose your platform and install the SDK:
 ### JavaScript/TypeScript
 
 ```bash
-npm install @universal-license/client
+npm install @unilic/client
 # or
-yarn add @universal-license/client
+yarn add @unilic/client
 # or
-pnpm add @universal-license/client
+pnpm add @unilic/client
 ```
 
 ### React
 
 ```bash
-npm install @universal-license/react @universal-license/client
+npm install @unilic/react @unilic/client
 # or
-yarn add @universal-license/react @universal-license/client
+yarn add @unilic/react @unilic/client
 ```
 
 React package provides hooks and components for convenient integration.
@@ -47,7 +47,7 @@ php artisan vendor:publish --provider="UniversalLicense\Laravel\LicenseServicePr
 ### JavaScript/TypeScript
 
 ```typescript
-import { LicenseClient, DeviceFingerprint } from '@universal-license/client';
+import { LicenseClient, DeviceFingerprint } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: 'https://license.yourdomain.com/api',
@@ -69,7 +69,7 @@ if (result.valid) {
 Wrap your app with the provider:
 
 ```tsx
-import { LicenseProvider } from '@universal-license/react';
+import { LicenseProvider } from '@unilic/react';
 
 function App() {
   return (
@@ -88,7 +88,7 @@ function App() {
 Then use hooks in your components:
 
 ```tsx
-import { useLicenseValidation } from '@universal-license/react';
+import { useLicenseValidation } from '@unilic/react';
 
 function MyComponent() {
   const { validate, validation, loading } = useLicenseValidation();
@@ -303,7 +303,7 @@ setInterval(revalidateLicense, 24 * 60 * 60 * 1000);
 Always handle errors gracefully:
 
 ```javascript
-import { ValidationError, NetworkError } from '@universal-license/client';
+import { ValidationError, NetworkError } from '@unilic/client';
 
 try {
   const result = await client.validate({

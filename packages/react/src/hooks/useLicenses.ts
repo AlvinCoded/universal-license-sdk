@@ -8,7 +8,7 @@ import type {
   GetRenewalNotificationsResponse,
   TestEmailRequest,
   TestEmailResponse,
-} from '@universal-license/client';
+} from '@unilic/client';
 
 export type LicenseFilters = {
   tier?: string;

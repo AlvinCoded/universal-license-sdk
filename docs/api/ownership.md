@@ -14,7 +14,7 @@ These endpoints are **app-scoped** and typically require an application key:
 In the JS SDK, set this once in `SDKConfig`:
 
 ```ts
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: 'https://license.example.com/api',
@@ -42,7 +42,7 @@ Claims ownership (first claim wins). Returns an **owner token**.
 - `POST /api/licenses/:licenseKey/claim-owner`
 
 ```ts
-import { DeviceFingerprint } from '@universal-license/client';
+import { DeviceFingerprint } from '@unilic/client';
 
 const deviceId = await DeviceFingerprint.generate();
 

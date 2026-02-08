@@ -41,7 +41,7 @@ start_dev() {
         exit 1
     fi
     
-    echo -e "${BLUE}🔨 Starting @universal-license/${pkg} in watch mode...${NC}"
+    echo -e "${BLUE}🔨 Starting @unilic/${pkg} in watch mode...${NC}"
     echo ""
     
     cd "packages/${pkg}"

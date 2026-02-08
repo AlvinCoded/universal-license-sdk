@@ -10,7 +10,7 @@ This example shows two common onboarding paths:
 Use a stable device identifier per device.
 
 ```ts
-import { DeviceFingerprint } from '@universal-license/client';
+import { DeviceFingerprint } from '@unilic/client';
 
 export async function getOrCreateDeviceId(): Promise<string> {
   const existing = localStorage.getItem('uls_device_id');
@@ -29,7 +29,7 @@ export function storeLicenseKey(licenseKey: string) {
 ## Setup client
 
 ```ts
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 export const client = new LicenseClient({
   baseUrl: 'https://license-server.example.com/api',

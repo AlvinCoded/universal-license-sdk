@@ -89,7 +89,7 @@ if (hasTierOrHigher(result.license, 'pro')) {
 ### React
 
 ```jsx
-import { useLicense } from '@universal-license/react';
+import { useLicense } from '@unilic/react';
 
 export function FeatureAccess() {
   const { license } = useLicense('LICENSE-KEY');
@@ -297,7 +297,7 @@ async function attemptToProceedWithFeature() {
 Create a component that gates content by tier:
 
 ```jsx
-import { useLicense } from '@universal-license/react';
+import { useLicense } from '@unilic/react';
 
 export function TierGate({ requiredTier, children, fallback }) {
   const { license, isLoading } = useLicense();

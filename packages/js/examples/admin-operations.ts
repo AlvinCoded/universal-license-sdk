@@ -7,7 +7,7 @@
  * - frontend/src/app/(dashboard)/licenses/page.tsx
  */
 
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 async function adminOperations() {
   // Initialize with admin authentication

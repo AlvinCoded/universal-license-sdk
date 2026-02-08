@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosError } from 'axios';
-import type { SDKConfig, ErrorResponse } from '@universal-license/core';
-import { DEFAULT_CONFIG, ERROR_CODES, HTTP_STATUS } from '@universal-license/core';
+import type { SDKConfig, ErrorResponse } from '@unilic/core';
+import { DEFAULT_CONFIG, ERROR_CODES, HTTP_STATUS } from '@unilic/core';
 import { LicenseError, NetworkError, ValidationError, PurchaseError } from '../errors';
 import { RetryStrategy } from './retry';
 

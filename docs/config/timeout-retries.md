@@ -122,7 +122,7 @@ use 5 retries.
 ## Handling Timeout and Retry Errors
 
 ```javascript
-import { LicenseError, NetworkError, ValidationError } from '@universal-license/client';
+import { LicenseError, NetworkError, ValidationError } from '@unilic/client';
 
 try {
   const result = await client.validation.validate({

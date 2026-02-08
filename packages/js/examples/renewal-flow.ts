@@ -7,7 +7,7 @@
  * - backend/src/services/notification.scheduler.ts
  */
 
-import { LicenseClient, DeviceFingerprint } from '@universal-license/client';
+import { LicenseClient, DeviceFingerprint } from '@unilic/client';
 
 async function renewalFlow() {
   const client = new LicenseClient({

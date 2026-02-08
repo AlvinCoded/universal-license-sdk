@@ -13,7 +13,7 @@ import type {
   SubscriptionDetailsResponse,
   TrialEligibilityResponse,
   TrialStatsResponse,
-} from '@universal-license/client';
+} from '@unilic/client';
 
 export function usePayment() {
   const { client } = useLicenseContext();

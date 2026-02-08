@@ -15,7 +15,7 @@ import type {
   TrialEligibilityResponse,
   TrialStatsResponse,
   WebhookResponse,
-} from '@universal-license/core';
+} from '@unilic/core';
 
 /**
  * Payment/Stripe operations

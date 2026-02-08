@@ -5,7 +5,7 @@ import type {
   Organization,
   OrganizationWithLicensesResponse,
   UpdateOrganizationRequest,
-} from '@universal-license/client';
+} from '@unilic/client';
 
 export function useOrganizations(options?: { auto?: boolean }) {
   const { client } = useLicenseContext();

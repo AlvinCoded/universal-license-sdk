@@ -1,7 +1,6 @@
 # API Reference
 
-This section documents the public API surface of the JavaScript/TypeScript SDK
-(`@universal-license/client`).
+This section documents the public API surface of the JavaScript/TypeScript SDK (`@unilic/client`).
 
 The SDK is a typed wrapper around an HTTP API. As long as your server implements the same routes and
 JSON shapes, you can use the SDK unchanged.
@@ -35,7 +34,7 @@ To authenticate admin calls, pass `apiKey` in the constructor or set it later vi
 The central class is `LicenseClient`.
 
 ```ts
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: 'https://license.example.com/api',

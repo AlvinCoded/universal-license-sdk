@@ -11,7 +11,7 @@ import {
   useFeatureFlag,
   LicenseGuard,
   FeatureGate,
-} from '@universal-license/react';
+} from '@unilic/react';
 
 // Dashboard Component
 function Dashboard() {

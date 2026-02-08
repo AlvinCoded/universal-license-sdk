@@ -6,8 +6,8 @@ import type {
   RenewalProcessResponse,
   RenewalRequest,
   RenewalVerifyResponse,
-} from '@universal-license/core';
-import { API_ENDPOINTS } from '@universal-license/core';
+} from '@unilic/core';
+import { API_ENDPOINTS } from '@unilic/core';
 
 /**
  * License renewal operations

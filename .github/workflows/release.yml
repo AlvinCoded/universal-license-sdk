@@ -31,12 +31,33 @@ jobs:
           node-version: 20
           cache: pnpm
 
+      - name: Configure pnpm workspace linking
+        run: |
+          pnpm config set link-workspace-packages true --global
+          pnpm config set prefer-workspace-packages true --global
+
       - name: Install
         run: pnpm install --frozen-lockfile
 
       - name: Configure npm auth
         run: |
           echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > "$HOME/.npmrc"
+          echo "@unilic:registry=https://registry.npmjs.org/" >> "$HOME/.npmrc"
+          echo "always-auth=true" >> "$HOME/.npmrc"
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Verify npm auth
+        run: |
+          set -euo pipefail
+          npm ping
+          NPM_USER="$(npm whoami)"
+          echo "Authenticated to npm as: ${NPM_USER}"
+          if [[ "${NPM_USER}" != "unilic" ]]; then
+            echo "NPM_TOKEN must be an automation token for the 'unilic' npm user to publish @unilic/* packages."
+            echo "Current token is associated with: ${NPM_USER}"
+            exit 1
+          fi
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 

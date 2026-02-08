@@ -9,8 +9,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@universal-license/core': path.resolve(__dirname, '../core/src'),
-      '@universal-license/client': path.resolve(__dirname, '../js/src'),
+      '@unilic/core': path.resolve(__dirname, '../core/src'),
+      '@unilic/client': path.resolve(__dirname, '../js/src'),
     },
   },
 });

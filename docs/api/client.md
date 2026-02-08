@@ -1,7 +1,7 @@
 # LicenseClient API
 
 The `LicenseClient` class is the main entry point for the JavaScript/TypeScript SDK
-(`@universal-license/client`).
+(`@unilic/client`).
 
 It composes feature modules (validation, products, purchases, admin tools) and provides a few
 convenience helpers.
@@ -11,7 +11,7 @@ convenience helpers.
 ### `new LicenseClient(config)`
 
 ```ts
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: 'https://license.example.com/api',
@@ -32,8 +32,7 @@ const client = new LicenseClient({
 
 ## `SDKConfig` (what is actually supported)
 
-`SDKConfig` is exported from `@universal-license/core` (and re-exported by
-`@universal-license/client`).
+`SDKConfig` is exported from `@unilic/core` (and re-exported by `@unilic/client`).
 
 Supported fields:
 
@@ -85,7 +84,7 @@ client.setApiKey(token);
 
 ## Exports
 
-`@universal-license/client` also exports:
+`@unilic/client` also exports:
 
 - Error classes: `LicenseError`, `ValidationError`, `NetworkError`, `PurchaseError`
 - HTTP utilities: `HttpClient`, retry helpers

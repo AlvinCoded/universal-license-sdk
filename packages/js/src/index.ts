@@ -1,5 +1,5 @@
 /**
- * @universal-license/client
+ * @unilic/client
  * Universal License Server - JavaScript/TypeScript Client SDK
  *
  * A comprehensive SDK for integrating with the Universal License Server.
@@ -9,7 +9,7 @@
  *
  * @example Quick Start
  * ```typescript
- * import { LicenseClient, DeviceFingerprint } from '@universal-license/client';
+ * import { LicenseClient, DeviceFingerprint } from '@unilic/client';
  *
  * const client = new LicenseClient({
  *   baseUrl: 'https://license.yourcompany.com/api'
@@ -216,13 +216,13 @@ export type {
   HealthResponse,
   DatabaseHealthResponse,
   EmailStatusResponse,
-} from '@universal-license/core';
+} from '@unilic/core';
 
 // ============================================================================
 // RE-EXPORT UTILITIES
 // ============================================================================
 
-export { DeviceFingerprint } from '@universal-license/core';
+export { DeviceFingerprint } from '@unilic/core';
 export {
   isValidEmail,
   isValidLicenseKey,
@@ -231,14 +231,9 @@ export {
   isValidTier,
   isLicenseExpired,
   daysUntilExpiry,
-} from '@universal-license/core';
+} from '@unilic/core';
 
-export {
-  generateRandomString,
-  sha256,
-  verifySignature,
-  generateUUID,
-} from '@universal-license/core';
+export { generateRandomString, sha256, verifySignature, generateUUID } from '@unilic/core';
 
 // ============================================================================
 // RE-EXPORT CONSTANTS
@@ -253,7 +248,7 @@ export {
   DEFAULT_CONFIG,
   VALIDATION_PATTERNS,
   STORAGE_KEYS,
-} from '@universal-license/core';
+} from '@unilic/core';
 
 // ============================================================================
 // VERSION
@@ -266,13 +261,13 @@ export const VERSION = '1.0.0';
  *
  * @example
  * ```typescript
- * import { createClient } from '@universal-license/client';
+ * import { createClient } from '@unilic/client';
  *
  * const client = createClient({
  *   baseUrl: 'https://license.yourcompany.com/api'
  * });
  * ```
  */
-export function createClient(config: import('@universal-license/core').SDKConfig) {
+export function createClient(config: import('@unilic/core').SDKConfig) {
   return new LicenseClient(config);
 }

@@ -6,15 +6,15 @@ and Pages Router).
 ## Prerequisites
 
 - Next.js 12+
-- `@universal-license/client` installed
+- `@unilic/client` installed
 - Knowledge of Next.js fundamentals
 
 ## Installation
 
 ```bash
-npm install @universal-license/client
+npm install @unilic/client
 # or
-pnpm add @universal-license/client
+pnpm add @unilic/client
 ```
 
 ## Setup (App Router - Recommended)
@@ -34,7 +34,7 @@ LICENSE_SERVER_SECRET_KEY=your-secret-key (for server-side validation)
 'use client';
 
 import { ReactNode, createContext, useContext } from 'react';
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 const LicenseContext = createContext<LicenseClient | null>(null);
 
@@ -91,7 +91,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 ```typescript
 // src/lib/license.ts
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 export const serverClient = new LicenseClient({
   baseUrl: process.env.NEXT_PUBLIC_LICENSE_SERVER_URL!,
@@ -143,8 +143,8 @@ export async function POST(request: NextRequest) {
 'use client';
 
 import { useEffect, useState } from 'react';
-import { DeviceFingerprint } from '@universal-license/client';
-import type { ValidationResult } from '@universal-license/client';
+import { DeviceFingerprint } from '@unilic/client';
+import type { ValidationResult } from '@unilic/client';
 
 export function useLicenseValidation(licenseKey: string) {
   const [result, setResult] = useState<ValidationResult | null>(null);
@@ -254,7 +254,7 @@ export const config = {
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useLicenseClient } from '@/providers/LicenseProvider';
-import { DeviceFingerprint } from '@universal-license/client';
+import { DeviceFingerprint } from '@unilic/client';
 
 export default function Onboarding() {
   const router = useRouter();
@@ -518,7 +518,7 @@ export const LICENSE_ERRORS = {
 ```typescript
 // Reuse client instance
 // src/lib/licenseClient.ts
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 let client: LicenseClient | null = null;
 

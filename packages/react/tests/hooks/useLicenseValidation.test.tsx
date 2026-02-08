@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { renderHook, act, waitFor } from '@testing-library/react';
 import { LicenseProvider } from '../../src/context/LicenseContext';
 import { useLicenseValidation } from '../../src/hooks/useLicenseValidation';
-import { LicenseClient, DeviceFingerprint } from '@universal-license/client';
+import { LicenseClient, DeviceFingerprint } from '@unilic/client';
 
 const hoisted = vi.hoisted(() => {
   let mockClient: any = {
@@ -22,7 +22,7 @@ const hoisted = vi.hoisted(() => {
   };
 });
 
-vi.mock('@universal-license/client', () => {
+vi.mock('@unilic/client', () => {
   class LicenseClient {
     constructor(_config: any) {
       return hoisted.getMockClient();

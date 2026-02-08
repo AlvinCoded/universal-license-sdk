@@ -2,8 +2,8 @@
 
 ## Overview
 
-`@universal-license/react` provides React-specific hooks and components for integrating the
-Universal License SDK:
+`@unilic/react` provides React-specific hooks and components for integrating the Universal License
+SDK:
 
 - **LicenseProvider** - Provides a `LicenseClient` instance via React context
 - **useLicense** - Access license-related client state
@@ -22,7 +22,7 @@ Supports:
 ## Installation
 
 ```bash
-pnpm add @universal-license/react @universal-license/client
+pnpm add @unilic/react @unilic/client
 ```
 
 ## Setup
@@ -55,7 +55,7 @@ REACT_APP_LICENSE_SERVER_URL=https://your-license-server.com/api
 // src/main.tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { LicenseProvider } from '@universal-license/react';
+import { LicenseProvider } from '@unilic/react';
 import App from './App';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -77,7 +77,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 ```tsx
 // app/layout.tsx
 import React from 'react';
-import { LicenseProvider } from '@universal-license/react';
+import { LicenseProvider } from '@unilic/react';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -103,7 +103,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 // src/index.tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { LicenseProvider } from '@universal-license/react';
+import { LicenseProvider } from '@unilic/react';
 import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
@@ -125,7 +125,7 @@ root.render(
 
 ```tsx
 import React from 'react';
-import { useLicenseValidation } from '@universal-license/react';
+import { useLicenseValidation } from '@unilic/react';
 
 export function Onboarding() {
   const [licenseKey, setLicenseKey] = React.useState('');

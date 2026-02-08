@@ -34,8 +34,8 @@ See [/guide/device-fingerprinting](/guide/device-fingerprinting) for recommended
 ## Cache-first validation (JavaScript/TypeScript)
 
 ```ts
-import { LicenseClient } from '@universal-license/client';
-import { DeviceFingerprint } from '@universal-license/core';
+import { LicenseClient } from '@unilic/client';
+import { DeviceFingerprint } from '@unilic/core';
 
 const client = new LicenseClient({
   baseUrl: 'https://your-license-api.example.com/api',
@@ -115,7 +115,7 @@ server must include them in the signed payload.
    trusting it.
 
 ```ts
-import { verifySignature } from '@universal-license/core';
+import { verifySignature } from '@unilic/core';
 
 // 1) Prefetch public key (online) and persist it in your own storage.
 const publicKey = await client.validation.getPublicKey();

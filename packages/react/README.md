@@ -1,11 +1,11 @@
-# @universal-license/react
+# @unilic/react
 
 React hooks and components for Universal License SDK.
 
 ## Why This Package?
 
-While `@universal-license/client` works in any JavaScript environment, this package provides
-**React-specific conveniences**:
+While `@unilic/client` works in any JavaScript environment, this package provides **React-specific
+conveniences**:
 
 ✅ **Hooks** - React-friendly state management with automatic caching  
 ✅ **Context** - Share SDK client across your app via React Context  
@@ -16,11 +16,11 @@ While `@universal-license/client` works in any JavaScript environment, this pack
 ## Installation
 
 ```bash
-npm install @universal-license/react @universal-license/client
+npm install @unilic/react @unilic/client
 # or
-yarn add @universal-license/react @universal-license/client
+yarn add @unilic/react @unilic/client
 # or
-pnpm add @universal-license/react @universal-license/client
+pnpm add @unilic/react @unilic/client
 ```
 
 ## Quick Start
@@ -28,7 +28,7 @@ pnpm add @universal-license/react @universal-license/client
 ### 1. Wrap Your App
 
 ```tsx
-import { LicenseProvider } from '@universal-license/react';
+import { LicenseProvider } from '@unilic/react';
 
 function App() {
   return (
@@ -47,7 +47,7 @@ function App() {
 ### 2. Use Hooks
 
 ```tsx
-import { useLicenseValidation } from '@universal-license/react';
+import { useLicenseValidation } from '@unilic/react';
 
 function OnboardingPage() {
   const [key, setKey] = useState('');
@@ -70,7 +70,7 @@ function OnboardingPage() {
 ### 3. Guard Features
 
 ```tsx
-import { FeatureGate } from '@universal-license/react';
+import { FeatureGate } from '@unilic/react';
 
 function Dashboard() {
   return (
@@ -178,7 +178,7 @@ Show/hide UI based on features.
 ### Onboarding Flow
 
 ```tsx
-import { useLicenseValidation, DeviceFingerprint } from '@universal-license/react';
+import { useLicenseValidation, DeviceFingerprint } from '@unilic/react';
 
 function Onboarding() {
   const [key, setKey] = useState('');
@@ -213,7 +213,7 @@ function Onboarding() {
 ### Feature-Based UI
 
 ```tsx
-import { FeatureGate } from '@universal-license/react';
+import { FeatureGate } from '@unilic/react';
 
 function App() {
   return (
@@ -246,7 +246,7 @@ function App() {
 ### Protected Routes
 
 ```tsx
-import { LicenseGuard } from '@universal-license/react';
+import { LicenseGuard } from '@unilic/react';
 import { useRouter } from 'next/router';
 
 function ProtectedRoute({ children }) {
@@ -290,7 +290,7 @@ See [examples/](./examples/) for complete integration examples:
 All hooks and components are fully typed:
 
 ```tsx
-import type { License, ValidateLicenseResponse } from '@universal-license/react';
+import type { License, ValidateLicenseResponse } from '@unilic/react';
 
 const { license }: { license: License | null } = useLicense(key);
 const { validation }: { validation: ValidateLicenseResponse | null } = useLicenseValidation();

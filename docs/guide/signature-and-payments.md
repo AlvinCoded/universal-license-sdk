@@ -9,11 +9,11 @@ const client = new LicenseClient({ baseUrl: 'https://license.example.com/api' })
 const publicKey = await client.validation.getPublicKey();
 ```
 
-2. Use `verifySignature` from `@universal-license/core` to validate signed payloads (e.g., offline
-   validation or signed tokens):
+2. Use `verifySignature` from `@unilic/core` to validate signed payloads (e.g., offline validation
+   or signed tokens):
 
 ```ts
-import { verifySignature } from '@universal-license/core';
+import { verifySignature } from '@unilic/core';
 
 const valid = verifySignature(payload, signature, publicKey);
 if (!valid) throw new Error('Invalid signature');

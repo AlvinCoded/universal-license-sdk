@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import { useLicenseContext } from '../context/LicenseContext';
-import type { ExportFormat } from '@universal-license/client';
+import type { ExportFormat } from '@unilic/client';
 
 export function useExport() {
   const { client } = useLicenseContext();

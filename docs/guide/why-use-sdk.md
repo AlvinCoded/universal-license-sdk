@@ -40,7 +40,7 @@ async function validateLicense(licenseKey, deviceId) {
 
 ```javascript
 // With SDK - simple and consistent
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: 'https://your-server.com/api',
@@ -103,7 +103,7 @@ response.toArray(); // Convert to object
 Full TypeScript support with proper typing:
 
 ```typescript
-import { LicenseClient, ValidationResult } from '@universal-license/client';
+import { LicenseClient, ValidationResult } from '@unilic/client';
 
 const client = new LicenseClient({ baseUrl: '...' });
 
@@ -127,7 +127,7 @@ Ready-to-use integrations for popular frameworks:
 #### React
 
 ```jsx
-import { LicenseGuard, FeatureGate, useLicenseValidation } from '@universal-license/react';
+import { LicenseGuard, FeatureGate, useLicenseValidation } from '@unilic/react';
 
 // Hooks
 const { validation, loading, validate } = useLicenseValidation();
@@ -231,7 +231,7 @@ No manual fingerprinting needed.
 Validate licenses without internet using cached data:
 
 ```javascript
-import { verifySignature } from '@universal-license/client';
+import { verifySignature } from '@unilic/client';
 
 // First validation (requires internet)
 const result = await client.validate({
@@ -253,7 +253,7 @@ if (await verifySignature(licenseData, signature, publicKey)) {
 Proper error types for different scenarios:
 
 ```javascript
-import { ValidationError, NetworkError } from '@universal-license/client';
+import { ValidationError, NetworkError } from '@unilic/client';
 
 try {
   const result = await client.validate({ licenseKey, deviceId });
@@ -381,7 +381,7 @@ export async function validateLicenseOnboarding(licenseKey: string) {
 #### With SDK (Simple and clean)
 
 ```typescript
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: process.env.REACT_APP_LICENSE_SERVER,

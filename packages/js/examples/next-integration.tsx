@@ -8,8 +8,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { LicenseClient, DeviceFingerprint } from '@universal-license/client';
-import type { License } from '@universal-license/client';
+import { LicenseClient, DeviceFingerprint } from '@unilic/client';
+import type { License } from '@unilic/client';
 
 // Initialize client (can also be in a context provider)
 const client = new LicenseClient({

@@ -6,7 +6,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { LicenseProvider, useLicenseValidation } from '@universal-license/react';
+import { LicenseProvider, useLicenseValidation } from '@unilic/react';
 
 // Your onboarding component
 function OnboardingPage() {

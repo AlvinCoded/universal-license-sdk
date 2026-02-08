@@ -1,5 +1,5 @@
 /**
- * @universal-license/core
+ * @unilic/core
  * Core types and utilities for Universal License SDK
  */
 

@@ -1,4 +1,4 @@
-import { LicenseClient, DeviceFingerprint } from '@universal-license/client';
+import { LicenseClient, DeviceFingerprint } from '@unilic/client';
 
 /**
  * Complete Purchase Flow Example

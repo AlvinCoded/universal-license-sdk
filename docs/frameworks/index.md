@@ -66,7 +66,7 @@ We provide optimized integrations for popular frontend frameworks:
 
 ### If you're building a **server-side service** (Node.js, Deno, etc.)
 
-→ Use the core `@universal-license/client` package directly (see
+→ Use the core `@unilic/client` package directly (see
 [JavaScript/TypeScript Installation](/installation/javascript))
 
 ### If you're building in **PHP or Laravel**
@@ -78,7 +78,7 @@ We provide optimized integrations for popular frontend frameworks:
 ### 1. Initialize the Client
 
 ```javascript
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: process.env.REACT_APP_LICENSE_SERVER_URL,

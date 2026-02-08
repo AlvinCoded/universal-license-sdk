@@ -20,7 +20,7 @@ limits, daily quotas, optional CAPTCHA). If CAPTCHA is required, send a token vi
 ## Complete Implementation
 
 ```typescript
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 import { loadStripe, type Stripe, type StripeCardElement } from '@stripe/stripe-js';
 
 const client = new LicenseClient({
@@ -260,7 +260,7 @@ order, confirming payment with Stripe Elements, and completing the purchase via 
 import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { CardElement, Elements, useStripe, useElements } from '@stripe/react-stripe-js';
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 const stripePromise = loadStripe('pk_test_YOUR_STRIPE_KEY');
 const client = new LicenseClient({

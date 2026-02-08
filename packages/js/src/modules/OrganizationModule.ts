@@ -4,7 +4,7 @@ import type {
   Organization,
   OrganizationWithLicensesResponse,
   UpdateOrganizationRequest,
-} from '@universal-license/core';
+} from '@unilic/core';
 
 /**
  * Organization operations (admin)

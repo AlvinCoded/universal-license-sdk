@@ -18,11 +18,11 @@ Before installing the Universal License SDK, ensure you have:
 
 The Universal License SDK consists of three packages:
 
-| Package                     | Purpose                    | Size  |
-| --------------------------- | -------------------------- | ----- |
-| `@universal-license/core`   | Shared types and utilities | ~10KB |
-| `@universal-license/client` | JavaScript/TypeScript SDK  | ~50KB |
-| `@universal-license/react`  | React hooks and components | ~30KB |
+| Package          | Purpose                    | Size  |
+| ---------------- | -------------------------- | ----- |
+| `@unilic/core`   | Shared types and utilities | ~10KB |
+| `@unilic/client` | JavaScript/TypeScript SDK  | ~50KB |
+| `@unilic/react`  | React hooks and components | ~30KB |
 
 ## JavaScript/TypeScript Projects
 
@@ -30,7 +30,7 @@ The Universal License SDK consists of three packages:
 
 ```bash
 # Core + Client (most common)
-npm install @universal-license/client
+npm install @unilic/client
 
 # Client includes core as dependency, so you get both
 ```
@@ -38,13 +38,13 @@ npm install @universal-license/client
 ### Using pnpm (Recommended)
 
 ```bash
-pnpm add @universal-license/client
+pnpm add @unilic/client
 ```
 
 ### Using yarn
 
 ```bash
-yarn add @universal-license/client
+yarn add @unilic/client
 ```
 
 ## React Projects
@@ -53,19 +53,19 @@ yarn add @universal-license/client
 
 ```bash
 # Install both client and React package
-npm install @universal-license/react @universal-license/client
+npm install @unilic/react @unilic/client
 ```
 
 ### Using pnpm
 
 ```bash
-pnpm add @universal-license/react @universal-license/client
+pnpm add @unilic/react @unilic/client
 ```
 
 ### Using yarn
 
 ```bash
-yarn add @universal-license/react @universal-license/client
+yarn add @unilic/react @unilic/client
 ```
 
 ## Framework-Specific Installation
@@ -74,7 +74,7 @@ yarn add @universal-license/react @universal-license/client
 
 ```bash
 # Install dependencies
-pnpm add @universal-license/react @universal-license/client
+pnpm add @unilic/react @unilic/client
 
 # Next.js 13+ with App Router is fully supported
 ```
@@ -85,7 +85,7 @@ pnpm add @universal-license/react @universal-license/client
 // app/providers.tsx
 'use client';
 
-import { LicenseProvider } from '@universal-license/react';
+import { LicenseProvider } from '@unilic/react';
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -117,14 +117,14 @@ export default function RootLayout({ children }) {
 ### Next.js (Pages Router)
 
 ```bash
-pnpm add @universal-license/react @universal-license/client
+pnpm add @unilic/react @unilic/client
 ```
 
 **Setup:**
 
 ```tsx
 // pages/_app.tsx
-import { LicenseProvider } from '@universal-license/react';
+import { LicenseProvider } from '@unilic/react';
 import type { AppProps } from 'next/app';
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -144,7 +144,7 @@ export default function App({ Component, pageProps }: AppProps) {
 ### Vite + React
 
 ```bash
-pnpm add @universal-license/react @universal-license/client
+pnpm add @unilic/react @unilic/client
 ```
 
 **Setup:**
@@ -153,7 +153,7 @@ pnpm add @universal-license/react @universal-license/client
 // src/main.tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { LicenseProvider } from '@universal-license/react';
+import { LicenseProvider } from '@unilic/react';
 import App from './App';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -173,7 +173,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 ### Create React App
 
 ```bash
-npm install @universal-license/react @universal-license/client
+npm install @unilic/react @unilic/client
 ```
 
 **Setup:**
@@ -182,7 +182,7 @@ npm install @universal-license/react @universal-license/client
 // src/index.tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { LicenseProvider } from '@universal-license/react';
+import { LicenseProvider } from '@unilic/react';
 import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
@@ -204,14 +204,14 @@ root.render(
 ### Vue 3
 
 ```bash
-pnpm add @universal-license/client
+pnpm add @unilic/client
 ```
 
 **Setup:**
 
 ```typescript
 // src/plugins/license.ts
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 export const licenseClient = new LicenseClient({
   baseUrl: import.meta.env.VITE_LICENSE_API_URL,
@@ -233,7 +233,7 @@ app.mount('#app');
 ### Angular
 
 ```bash
-npm install @universal-license/client
+npm install @unilic/client
 ```
 
 **Setup:**
@@ -241,7 +241,7 @@ npm install @universal-license/client
 ```typescript
 // src/app/services/license.service.ts
 import { Injectable } from '@angular/core';
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -273,7 +273,7 @@ For browser-based projects without a bundler:
   import {
     LicenseClient,
     DeviceFingerprint,
-  } from 'https://unpkg.com/@universal-license/client@latest/dist/index.mjs';
+  } from 'https://unpkg.com/@unilic/client@latest/dist/index.mjs';
 
   const client = new LicenseClient({
     baseUrl: 'https://your-license-server.com/api',
@@ -295,14 +295,14 @@ For browser-based projects without a bundler:
 ### Node.js Server
 
 ```bash
-pnpm add @universal-license/client
+pnpm add @unilic/client
 ```
 
 **Setup:**
 
 ```typescript
 // src/services/licenseService.ts
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 export const licenseClient = new LicenseClient({
   baseUrl: process.env.LICENSE_API_URL!,
@@ -357,7 +357,7 @@ LICENSE_API_URL=https://your-license-server.com/api
 After installation, verify everything is working:
 
 ```typescript
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: process.env.YOUR_ENV_VAR,
@@ -394,7 +394,7 @@ If using TypeScript, ensure your `tsconfig.json` includes:
 
 ### Module not found
 
-If you see `Cannot find module '@universal-license/client'`:
+If you see `Cannot find module '@unilic/client'`:
 
 ```bash
 # Clear node_modules and reinstall

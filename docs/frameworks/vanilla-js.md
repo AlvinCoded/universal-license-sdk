@@ -16,7 +16,7 @@ Use the Universal License SDK directly in any JavaScript environment without fra
 ## Basic Setup
 
 ```javascript
-import { LicenseClient, DeviceFingerprint } from '@universal-license/client';
+import { LicenseClient, DeviceFingerprint } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: process.env.LICENSE_SERVER_URL,
@@ -113,7 +113,7 @@ function setupUI() {
 ### 3. Offline Validation (with Signature Verification)
 
 ```javascript
-import { verifySignature } from '@universal-license/core';
+import { verifySignature } from '@unilic/core';
 
 async function validateOfflineWithSignature(licenseKey, deviceId, signature) {
   try {

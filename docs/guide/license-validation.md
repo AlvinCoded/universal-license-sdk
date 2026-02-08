@@ -10,7 +10,7 @@ application's requirements. This is the most common operation you'll perform wit
 ### JavaScript/TypeScript
 
 ```javascript
-import { LicenseClient, DeviceFingerprint } from '@universal-license/client';
+import { LicenseClient, DeviceFingerprint } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: 'https://license.yourdomain.com/api',
@@ -35,7 +35,7 @@ identifier that represents the current device without requiring user input.
 ### React
 
 ```jsx
-import { useLicenseValidation } from '@universal-license/react';
+import { useLicenseValidation } from '@unilic/react';
 
 export function LicenseActivation() {
   const [licenseKey, setLicenseKey] = useState('');
@@ -317,7 +317,7 @@ async function attemptAdvancedReport() {
 Validation can fail for several reasons. Always handle both network errors and validation failures:
 
 ```javascript
-import { ValidationError, NetworkError } from '@universal-license/client';
+import { ValidationError, NetworkError } from '@unilic/client';
 
 try {
   const result = await client.validation.validate({

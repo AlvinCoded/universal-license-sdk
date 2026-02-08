@@ -1,5 +1,5 @@
 import type { HttpClient } from '../http/HttpClient';
-import type { ExportFormat } from '@universal-license/core';
+import type { ExportFormat } from '@unilic/core';
 
 /**
  * Export operations (admin)

@@ -7,7 +7,7 @@ import type {
   ImportMode,
   ImportPreviewResponse,
   ImportValidateResponse,
-} from '@universal-license/client';
+} from '@unilic/client';
 
 export function useImport() {
   const { client } = useLicenseContext();

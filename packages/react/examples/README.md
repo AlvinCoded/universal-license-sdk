@@ -20,7 +20,7 @@ Practical examples showing how to integrate the Universal License SDK in React a
 ```bash
 npm create vite@latest my-app -- --template react-ts
 cd my-app
-npm install @universal-license/react @universal-license/client
+npm install @unilic/react @unilic/client
 # Copy basic-setup.tsx content to src/main.tsx
 npm run dev
 ```
@@ -48,7 +48,7 @@ npm run dev
 ### Pattern 1: Onboarding Flow
 
 ```tsx
-import { useLicenseValidation } from '@universal-license/react';
+import { useLicenseValidation } from '@unilic/react';
 
 function Onboarding() {
   const { validate, validation, loading } = useLicenseValidation();
@@ -69,7 +69,7 @@ function Onboarding() {
 ### Pattern 2: Feature Gating
 
 ```tsx
-import { FeatureGate } from '@universal-license/react';
+import { FeatureGate } from '@unilic/react';
 
 function AdvancedFeature() {
   return (
@@ -83,7 +83,7 @@ function AdvancedFeature() {
 ### Pattern 3: License Info Display
 
 ```tsx
-import { useLicense } from '@universal-license/react';
+import { useLicense } from '@unilic/react';
 
 function LicenseCard() {
   const { license, loading } = useLicense(licenseKey);
@@ -114,7 +114,7 @@ VITE_LICENSE_API_URL=http://localhost:3001/api
 // app/providers.tsx
 'use client';
 
-import { LicenseProvider } from '@universal-license/react';
+import { LicenseProvider } from '@unilic/react';
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -147,7 +147,7 @@ export default function RootLayout({ children }) {
 
 ```tsx
 // main.tsx or index.tsx
-import { LicenseProvider } from '@universal-license/react';
+import { LicenseProvider } from '@unilic/react';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

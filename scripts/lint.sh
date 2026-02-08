@@ -43,7 +43,7 @@ for pkg in "${PACKAGES[@]}"; do
         continue
     fi
     
-    echo -e "${BLUE}🔍 Linting @universal-license/${pkg}...${NC}"
+    echo -e "${BLUE}🔍 Linting @unilic/${pkg}...${NC}"
     cd "packages/${pkg}"
     
     # TypeScript check
@@ -72,7 +72,7 @@ for pkg in "${PACKAGES[@]}"; do
     fi
     
     if [ "$FAILED" = false ]; then
-        echo -e "${GREEN}✓ @universal-license/${pkg} passed linting${NC}"
+        echo -e "${GREEN}✓ @unilic/${pkg} passed linting${NC}"
     fi
     
     echo ""

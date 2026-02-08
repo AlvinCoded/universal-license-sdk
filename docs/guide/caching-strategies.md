@@ -2,7 +2,7 @@
 
 ## What the SDK actually caches
 
-### JavaScript/TypeScript (`@universal-license/client`)
+### JavaScript/TypeScript (`@unilic/client`)
 
 With caching enabled (default), the JS SDK caches:
 

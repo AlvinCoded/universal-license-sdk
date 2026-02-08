@@ -3,10 +3,10 @@
 This page documents the configuration options that are actually supported by the SDK packages in
 this repository.
 
-## JavaScript/TypeScript (`@universal-license/client`)
+## JavaScript/TypeScript (`@unilic/client`)
 
 ```ts
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: 'https://license.yourcompany.com/api',
@@ -35,7 +35,7 @@ const client = new LicenseClient({
 
 ### Supported fields
 
-These fields come from `SDKConfig` in `@universal-license/core`:
+These fields come from `SDKConfig` in `@unilic/core`:
 
 - `baseUrl` (required)
 - `apiKey` (optional) → adds `Authorization: Bearer <token>`
@@ -46,12 +46,12 @@ These fields come from `SDKConfig` in `@universal-license/core`:
 - `debug` (boolean)
 - `headers` (object)
 
-## React (`@universal-license/react`)
+## React (`@unilic/react`)
 
-`@universal-license/react` accepts the same `SDKConfig` and passes it to `LicenseClient`.
+`@unilic/react` accepts the same `SDKConfig` and passes it to `LicenseClient`.
 
 ```tsx
-import { LicenseProvider } from '@universal-license/react';
+import { LicenseProvider } from '@unilic/react';
 
 export function App() {
   return (

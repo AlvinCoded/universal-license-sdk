@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `@universal-license/client` package works in any JavaScript environment:
+The `@unilic/client` package works in any JavaScript environment:
 
 - **Node.js** servers (14+)
 - **Browser** environments (modern browsers with ES6 support)
@@ -17,19 +17,19 @@ The `@universal-license/client` package works in any JavaScript environment:
 ### Using npm
 
 ```bash
-npm install @universal-license/client
+npm install @unilic/client
 ```
 
 ### Using yarn
 
 ```bash
-yarn add @universal-license/client
+yarn add @unilic/client
 ```
 
 ### Using pnpm
 
 ```bash
-pnpm add @universal-license/client
+pnpm add @unilic/client
 ```
 
 ## Quick Start
@@ -37,7 +37,7 @@ pnpm add @universal-license/client
 ### 1. Initialize the Client
 
 ```javascript
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: 'https://your-license-server.com/api',
@@ -51,7 +51,7 @@ const client = new LicenseClient({
 ### 2. Validate a License
 
 ```javascript
-import { DeviceFingerprint } from '@universal-license/client';
+import { DeviceFingerprint } from '@unilic/client';
 
 const result = await client.validation.validate({
   licenseKey: 'PROD-ORG-2025-XXXX-XXXX-XXXX',
@@ -126,7 +126,7 @@ const client = new LicenseClient({
 Full TypeScript support with complete type definitions:
 
 ```typescript
-import { LicenseClient, ValidationResult, License } from '@universal-license/client';
+import { LicenseClient, ValidationResult, License } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: 'https://your-license-server.com/api',
@@ -151,7 +151,7 @@ if (result.valid) {
 No additional setup needed. The SDK works out of the box:
 
 ```bash
-npm install @universal-license/client
+npm install @unilic/client
 ```
 
 ### Next.js
@@ -160,7 +160,7 @@ Works in both SSR and CSR:
 
 ```typescript
 // pages/api/validate.ts
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: process.env.LICENSE_SERVER_URL,
@@ -178,7 +178,7 @@ Works with CRA without ejecting:
 
 ```javascript
 // src/services/licenseClient.ts
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 export const client = new LicenseClient({
   baseUrl: process.env.REACT_APP_LICENSE_SERVER_URL,
@@ -195,7 +195,7 @@ Works with standard Webpack config. No special setup needed.
 ### Basic Node.js App
 
 ```javascript
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: 'https://your-license-server.com/api',
@@ -209,7 +209,7 @@ export default client;
 
 ```javascript
 import express from 'express';
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 const app = express();
 const client = new LicenseClient({
@@ -230,7 +230,7 @@ app.post('/validate-license', async (req, res) => {
 
 ```typescript
 import { Injectable } from '@nestjs/common';
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()
@@ -256,13 +256,13 @@ export class LicenseService {
 Ensure the package is installed:
 
 ```bash
-npm list @universal-license/client
+npm list @unilic/client
 ```
 
 If not listed, reinstall:
 
 ```bash
-npm install @universal-license/client
+npm install @unilic/client
 ```
 
 ### CORS Errors
@@ -301,10 +301,10 @@ If you have import issues with CommonJS:
 
 ```javascript
 // CommonJS (Node.js)
-const { LicenseClient } = require('@universal-license/client');
+const { LicenseClient } = require('@unilic/client');
 
 // Or use async import
-const { LicenseClient } = await import('@universal-license/client');
+const { LicenseClient } = await import('@unilic/client');
 ```
 
 ## Package Contents
@@ -313,16 +313,16 @@ After installation, you have access to:
 
 ```javascript
 // Main client
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 // Modules
-import { ValidationModule } from '@universal-license/client';
-import { LicenseModule } from '@universal-license/client';
-import { ProductModule } from '@universal-license/client';
-import { PurchaseModule } from '@universal-license/client';
+import { ValidationModule } from '@unilic/client';
+import { LicenseModule } from '@unilic/client';
+import { ProductModule } from '@unilic/client';
+import { PurchaseModule } from '@unilic/client';
 
 // Utilities
-import { DeviceFingerprint } from '@universal-license/client';
+import { DeviceFingerprint } from '@unilic/client';
 import {
     isValidEmail,
     isValidLicenseKey,
@@ -332,7 +332,7 @@ import {
     isLicenseExpired,
     daysUntilExpiry,
     verifySignature,
-} from '@universal-license/client';
+} from '@unilic/client';
 
 // Types (TypeScript)
 import type {
@@ -340,13 +340,13 @@ import type {
     ValidateLicenseResponse,
     Product,
     SubscriptionPlan
-} from '@universal-license/client';
+} from '@unilic/client';
 
 // Exceptions
 import {
     ValidationError,
     NetworkError
-} from '@universal-license/client';
+} from '@unilic/client';
 ```
 
 ## Verification
@@ -354,7 +354,7 @@ import {
 Test your installation:
 
 ```javascript
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: 'https://your-license-server.com/api',

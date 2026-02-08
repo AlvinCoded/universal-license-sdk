@@ -30,7 +30,7 @@ for pkg in "${PACKAGES[@]}"; do
     if [ -d "packages/${pkg}" ]; then
         cd "packages/${pkg}"
         
-        echo "  → Linking @universal-license/${pkg}"
+        echo "  → Linking @unilic/${pkg}"
         pnpm link --global || npm link
         
         cd ../..
@@ -43,10 +43,10 @@ echo ""
 echo "📋 Usage in your project:"
 echo ""
 echo "  cd /path/to/your/project"
-echo "  pnpm link @universal-license/client"
-echo "  pnpm link @universal-license/react"
+echo "  pnpm link @unilic/client"
+echo "  pnpm link @unilic/react"
 echo ""
 echo "💡 To unlink:"
-echo "  pnpm unlink @universal-license/client"
-echo "  pnpm unlink @universal-license/react"
+echo "  pnpm unlink @unilic/client"
+echo "  pnpm unlink @unilic/react"
 echo ""

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useLicenseContext } from '../context/LicenseContext';
-import type { ActivityLog } from '@universal-license/client';
+import type { ActivityLog } from '@unilic/client';
 
 export function useActivity(options?: { auto?: boolean; limit?: number }) {
   const { client } = useLicenseContext();

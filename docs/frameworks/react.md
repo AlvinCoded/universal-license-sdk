@@ -5,13 +5,13 @@ Complete guide to integrating the Universal License SDK with React applications.
 ## Prerequisites
 
 - React 18+
-- @universal-license/react package installed
+- @unilic/react package installed
 - Basic React knowledge
 
 ## Installation
 
 ```bash
-pnpm add @universal-license/react @universal-license/client
+pnpm add @unilic/react @unilic/client
 ```
 
 ## LicenseProvider Setup
@@ -20,7 +20,7 @@ Wrap your app with `LicenseProvider` to make license functionality available thr
 
 ```tsx
 // src/App.tsx
-import { LicenseProvider } from '@universal-license/react';
+import { LicenseProvider } from '@unilic/react';
 import Dashboard from './pages/Dashboard';
 
 function App() {
@@ -47,7 +47,7 @@ export default App;
 Validate a license key:
 
 ```tsx
-import { useLicenseValidation } from '@universal-license/react';
+import { useLicenseValidation } from '@unilic/react';
 
 function OnboardingForm() {
   const [licenseKey, setLicenseKey] = useState('');
@@ -89,7 +89,7 @@ function OnboardingForm() {
 Fetch license information:
 
 ```tsx
-import { useLicense } from '@universal-license/react';
+import { useLicense } from '@unilic/react';
 
 function LicenseInfo() {
   const licenseKey = localStorage.getItem('licenseKey');
@@ -114,7 +114,7 @@ function LicenseInfo() {
 Simple feature access checking (boolean):
 
 ```tsx
-import { useFeatureFlag } from '@universal-license/react';
+import { useFeatureFlag } from '@unilic/react';
 
 function AdvancedFeatures() {
   const hasFeature = useFeatureFlag('advancedReporting');
@@ -134,7 +134,7 @@ function AdvancedFeatures() {
 Protect routes that require valid licenses:
 
 ```tsx
-import { LicenseGuard } from '@universal-license/react';
+import { LicenseGuard } from '@unilic/react';
 import Dashboard from './Dashboard';
 
 function ProtectedLayout() {
@@ -157,7 +157,7 @@ function ProtectedLayout() {
 Conditionally render features:
 
 ```tsx
-import { FeatureGate } from '@universal-license/react';
+import { FeatureGate } from '@unilic/react';
 
 function Settings() {
   return (
@@ -185,7 +185,7 @@ function Settings() {
 ```tsx
 // src/pages/Onboarding.tsx
 import { useState } from 'react';
-import { useLicenseValidation } from '@universal-license/react';
+import { useLicenseValidation } from '@unilic/react';
 
 export default function OnboardingPage() {
   const { validate, validation, loading, error } = useLicenseValidation();
@@ -312,7 +312,7 @@ export const useLicenseContext = () => useContext(LicenseContext);
 
 ```tsx
 import { useEffect } from 'react';
-import { useLicense } from '@universal-license/react';
+import { useLicense } from '@unilic/react';
 
 function usePeriodicLicenseCheck(interval = 24 * 60 * 60 * 1000) {
   const { revalidate } = useLicense();
@@ -368,7 +368,7 @@ export default function App() {
 
 ```tsx
 import { render, screen } from '@testing-library/react';
-import { LicenseProvider } from '@universal-license/react';
+import { LicenseProvider } from '@unilic/react';
 
 describe('License Integration', () => {
   it('validates license successfully', async () => {

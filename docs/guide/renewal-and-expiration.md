@@ -24,7 +24,7 @@ The `expiresAt` field contains an ISO 8601 date string indicating when the licen
 ### Calculate Days Until Expiry
 
 ```javascript
-import { daysUntilExpiry } from '@universal-license/client';
+import { daysUntilExpiry } from '@unilic/client';
 
 const daysLeft = daysUntilExpiry('2025-12-31T23:59:59Z');
 
@@ -43,7 +43,7 @@ indicate an expired license.
 ### Check if License is Expired
 
 ```javascript
-import { isLicenseExpired } from '@universal-license/client';
+import { isLicenseExpired } from '@unilic/client';
 
 const expired = isLicenseExpired('2024-06-15T23:59:59Z');
 
@@ -238,8 +238,8 @@ setInterval(checkAndNotifyRenewals, 24 * 60 * 60 * 1000);
 ## React Renewal Components
 
 ```jsx
-import { useLicense } from '@universal-license/react';
-import { daysUntilExpiry } from '@universal-license/client';
+import { useLicense } from '@unilic/react';
+import { daysUntilExpiry } from '@unilic/client';
 
 export function RenewalStatus({ licenseKey }) {
   const { license, loading } = useLicense(licenseKey);

@@ -50,7 +50,7 @@ fi
 run_package_tests() {
     local pkg=$1
     
-    echo -e "${BLUE}🧪 Testing @universal-license/${pkg}...${NC}"
+    echo -e "${BLUE}🧪 Testing @unilic/${pkg}...${NC}"
     
     if [ ! -d "packages/${pkg}" ]; then
         echo -e "${YELLOW}⚠️  Package ${pkg} not found, skipping...${NC}"
@@ -77,7 +77,7 @@ run_package_tests() {
         exit 1
     }
     
-    echo -e "${GREEN}✓ @universal-license/${pkg} tests passed${NC}"
+    echo -e "${GREEN}✓ @unilic/${pkg} tests passed${NC}"
     echo ""
     
     cd ../..

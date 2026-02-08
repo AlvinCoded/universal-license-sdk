@@ -1,9 +1,5 @@
 import type { HttpClient } from '../http/HttpClient';
-import type {
-  ActivityLog,
-  GetActivityLogsResponse,
-  GetValidationLogsResponse,
-} from '@universal-license/core';
+import type { ActivityLog, GetActivityLogsResponse, GetValidationLogsResponse } from '@unilic/core';
 
 /**
  * Activity/audit log operations (admin)

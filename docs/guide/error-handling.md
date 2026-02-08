@@ -15,7 +15,7 @@ The SDK exports several error classes that help you identify and respond to diff
 Thrown when validation fails (license invalid, expired, revoked, etc.):
 
 ```javascript
-import { ValidationError } from '@universal-license/client';
+import { ValidationError } from '@unilic/client';
 
 try {
   const result = await client.validate({
@@ -38,7 +38,7 @@ license is not valid for some reason.
 Thrown when network communication fails:
 
 ```javascript
-import { NetworkError } from '@universal-license/client';
+import { NetworkError } from '@unilic/client';
 
 try {
   const result = await client.validate({
@@ -61,7 +61,7 @@ these based on your configuration.
 Thrown when purchase operations fail:
 
 ```javascript
-import { PurchaseError } from '@universal-license/client';
+import { PurchaseError } from '@unilic/client';
 
 try {
   const order = await client.purchases.createOrder({
@@ -85,7 +85,7 @@ Purchase errors occur when order creation, completion, or retrieval fails.
 Thrown for general license operation failures:
 
 ```javascript
-import { LicenseError } from '@universal-license/client';
+import { LicenseError } from '@unilic/client';
 
 try {
   // Admin endpoint example (e.g. fetching a license by key)
@@ -103,12 +103,7 @@ try {
 Here's a pattern for handling all error types:
 
 ```javascript
-import {
-  ValidationError,
-  NetworkError,
-  PurchaseError,
-  LicenseError,
-} from '@universal-license/client';
+import { ValidationError, NetworkError, PurchaseError, LicenseError } from '@unilic/client';
 
 async function handleLicenseOperation(operation) {
   try {
@@ -303,7 +298,7 @@ In React, wrap license operations in error boundaries:
 
 ```jsx
 import { useState } from 'react';
-import { ValidationError, NetworkError } from '@universal-license/client';
+import { ValidationError, NetworkError } from '@unilic/client';
 
 export function LicenseActivation() {
   const [error, setError] = useState(null);

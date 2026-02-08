@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { LicenseCache } from '../../../src/cache/LicenseCache';
 import { MemoryStorage } from '../../../src/storage/MemoryStorage';
-import type { License } from '@universal-license/core';
+import type { License } from '@unilic/core';
 
 describe('LicenseCache', () => {
   let cache: LicenseCache;

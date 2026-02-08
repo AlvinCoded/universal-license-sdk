@@ -10,7 +10,7 @@ and understand request/response flows.
 ### JavaScript/TypeScript
 
 ```javascript
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: 'https://your-server.com/api',
@@ -23,7 +23,7 @@ const client = new LicenseClient({
 ### React
 
 ```jsx
-import { LicenseProvider } from '@universal-license/react';
+import { LicenseProvider } from '@unilic/react';
 
 function App() {
   return (

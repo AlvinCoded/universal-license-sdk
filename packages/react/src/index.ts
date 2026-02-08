@@ -1,8 +1,8 @@
 /**
- * @universal-license/react
+ * @unilic/react
  * React hooks and components for Universal License SDK
  *
- * This is a thin wrapper around @universal-license/client that provides
+ * This is a thin wrapper around @unilic/client that provides
  * React-specific patterns like hooks and context.
  */
 
@@ -38,4 +38,4 @@ export type {
   Product,
   SubscriptionPlan,
   SDKConfig,
-} from '@universal-license/client';
+} from '@unilic/client';

@@ -2,11 +2,11 @@ import { describe, it, expect, vi } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import { LicenseProvider } from '../../src/context/LicenseContext';
 import { LicenseGuard } from '../../src/components/LicenseGuard';
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 let mockClient: any;
 
-vi.mock('@universal-license/client', () => {
+vi.mock('@unilic/client', () => {
   class LicenseClient {
     constructor(_config: any) {
       return mockClient;

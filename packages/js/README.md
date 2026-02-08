@@ -1,4 +1,4 @@
-# @universal-license/client
+# @unilic/client
 
 JavaScript/TypeScript SDK for Universal License Server - Secure license validation, purchase flows,
 and subscription management.
@@ -6,17 +6,17 @@ and subscription management.
 ## Installation
 
 ```bash
-npm install @universal-license/client
+npm install @unilic/client
 # or
-yarn add @universal-license/client
+yarn add @unilic/client
 # or
-pnpm add @universal-license/client
+pnpm add @unilic/client
 ```
 
 ## Quick Start
 
 ```typescript
-import { LicenseClient, DeviceFingerprint } from '@universal-license/client';
+import { LicenseClient, DeviceFingerprint } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: 'https://license.yourcompany.com/api',

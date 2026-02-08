@@ -1,5 +1,5 @@
 import type { HttpClient } from '../http/HttpClient';
-import type { CreatePlanRequest, SubscriptionPlan } from '@universal-license/core';
+import type { CreatePlanRequest, SubscriptionPlan } from '@unilic/core';
 
 /**
  * Plan operations

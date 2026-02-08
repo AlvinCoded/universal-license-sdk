@@ -6,14 +6,14 @@ Complete guide to integrating the Universal License SDK with Vue 3 applications.
 
 - Vue 3.0+
 - Composition API support
-- `@universal-license/client` package installed
+- `@unilic/client` package installed
 
 ## Installation
 
 ```bash
-npm install @universal-license/client
+npm install @unilic/client
 # or
-pnpm add @universal-license/client
+pnpm add @unilic/client
 ```
 
 ## Setup
@@ -23,8 +23,8 @@ pnpm add @universal-license/client
 ```typescript
 // src/composables/useLicense.ts
 import { ref, onMounted } from 'vue';
-import { LicenseClient, DeviceFingerprint } from '@universal-license/client';
-import type { License, ValidationResult } from '@universal-license/client';
+import { LicenseClient, DeviceFingerprint } from '@unilic/client';
+import type { License, ValidationResult } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: import.meta.env.VITE_LICENSE_SERVER_URL,
@@ -447,7 +447,7 @@ export function useOfflineLicense() {
   const { license, client } = useLicense();
 
   async function validateOffline(signature: string) {
-    const { verifySignature } = await import('@universal-license/core');
+    const { verifySignature } = await import('@unilic/core');
 
     if (!license.value) return false;
 
@@ -492,7 +492,7 @@ describe('useLicense', () => {
     const { validate, isValid } = useLicense();
 
     // Mock the client
-    vi.mock('@universal-license/client');
+    vi.mock('@unilic/client');
 
     await validate('TEST-LICENSE-KEY');
     expect(isValid.value).toBe(true);

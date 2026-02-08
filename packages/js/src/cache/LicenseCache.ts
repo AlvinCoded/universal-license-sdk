@@ -1,6 +1,6 @@
 import type { StorageAdapter } from '../storage';
-import type { License } from '@universal-license/core';
-import { CACHE_KEYS, DEFAULT_CONFIG } from '@universal-license/core';
+import type { License } from '@unilic/core';
+import { CACHE_KEYS, DEFAULT_CONFIG } from '@unilic/core';
 
 /**
  * License cache manager

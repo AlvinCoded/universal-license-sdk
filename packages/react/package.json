@@ -1,5 +1,5 @@
 {
-  "name": "@universal-license/react",
+  "name": "@unilic/react",
   "version": "0.1.0",
   "type": "module",
   "description": "React hooks and components for Universal License SDK",
@@ -36,10 +36,10 @@
   "author": "Found CTRL",
   "license": "MIT",
   "dependencies": {
-    "@universal-license/core": "^0.1.0"
+    "@unilic/core": "^0.1.0"
   },
   "peerDependencies": {
-    "@universal-license/client": "^0.1.0",
+    "@unilic/client": "^0.1.0",
     "react": "^18.0.0 || ^19.0.0"
   },
   "devDependencies": {
@@ -51,7 +51,7 @@
     "@testing-library/react": "^16.3.2",
     "@types/react": "^19.2.13",
     "@types/react-dom": "^19.2.3",
-    "@universal-license/client": "^0.1.0",
+    "@unilic/client": "^0.1.0",
     "happy-dom": "^20.5.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",

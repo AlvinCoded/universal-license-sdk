@@ -240,13 +240,13 @@ cd universal-license-sdk
 
 # 2. In your project (e.g., server or web app)
 cd ../your-project
-pnpm link @universal-license/client
+pnpm link @unilic/client
 
 # 3. Test your changes
 # The SDK is now linked and changes reflect immediately
 
 # 4. Unlink when done
-pnpm unlink @universal-license/client
+pnpm unlink @unilic/client
 ```
 
 **When to use:**
@@ -309,13 +309,13 @@ cd universal-license-sdk
 
 # 2. Link in your app or server
 cd ../your-project
-pnpm link @universal-license/client
+pnpm link @unilic/client
 
 # 3. Test integration
 # Make API calls using SDK
 
 # 4. Unlink when done
-pnpm unlink @universal-license/client
+pnpm unlink @unilic/client
 ```
 
 ---
@@ -337,7 +337,7 @@ Your license server uses these SDK endpoints:
 Your web app can use SDK:
 
 - Replace `apiClient` calls with SDK methods
-- Use React hooks from `@universal-license/react`
+- Use React hooks from `@unilic/react`
 - Feature gates using SDK's built-in helpers
 
 ### CI/CD Integration

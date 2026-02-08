@@ -90,7 +90,7 @@ pnpm run link:local
 
 # In your app directory
 cd ../your-app
-pnpm link @universal-license/client
+pnpm link @unilic/client
 ```
 
 ## 📝 Commit Convention

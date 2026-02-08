@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { LicenseClient } from '../../src/LicenseClient';
-import { CACHE_KEYS } from '@universal-license/core';
+import { CACHE_KEYS } from '@unilic/core';
 
 describe('LicenseClient.getCachedLicense', () => {
   it('returns null when cache empty and returns cached object when present', async () => {

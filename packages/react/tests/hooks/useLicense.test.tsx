@@ -2,12 +2,12 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { renderHook, waitFor } from '@testing-library/react';
 import { LicenseProvider } from '../../src/context/LicenseContext';
 import { useLicense } from '../../src/hooks/useLicense';
-import { LicenseClient } from '@universal-license/client';
-import type { License } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
+import type { License } from '@unilic/client';
 
 let mockClient: any;
 
-vi.mock('@universal-license/client', () => {
+vi.mock('@unilic/client', () => {
   class LicenseClient {
     constructor(_config: any) {
       return mockClient;

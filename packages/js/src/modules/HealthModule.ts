@@ -1,9 +1,5 @@
 import type { HttpClient } from '../http/HttpClient';
-import type {
-  DatabaseHealthResponse,
-  EmailStatusResponse,
-  HealthResponse,
-} from '@universal-license/core';
+import type { DatabaseHealthResponse, EmailStatusResponse, HealthResponse } from '@unilic/core';
 
 /**
  * Health/status operations

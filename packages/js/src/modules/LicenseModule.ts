@@ -9,8 +9,8 @@ import type {
   UpcomingRenewalsResponse,
   UpdateLicenseRenewalSettingsRequest,
   UpdateLicenseRenewalSettingsResponse,
-} from '@universal-license/core';
-import { API_ENDPOINTS } from '@universal-license/core';
+} from '@unilic/core';
+import { API_ENDPOINTS } from '@unilic/core';
 
 /**
  * License management operations

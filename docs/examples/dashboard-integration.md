@@ -17,7 +17,7 @@ This example assumes you already store `licenseKey` and `deviceId` in `localStor
 ## Complete Implementation
 
 ```ts
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 const client = new LicenseClient({
   baseUrl: 'https://license-server.example.com/api',
@@ -209,7 +209,7 @@ export async function renderLicenseDashboard(): Promise<string> {
 
 ```tsx
 import React, { useEffect, useMemo, useState } from 'react';
-import { LicenseClient } from '@universal-license/client';
+import { LicenseClient } from '@unilic/client';
 
 type StoredValidation = {
   license: {

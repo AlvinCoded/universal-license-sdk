@@ -6,7 +6,7 @@ import type {
   CreateOrderRequest,
   CreateOrderResponse,
   PurchaseOrder,
-} from '@universal-license/client';
+} from '@unilic/client';
 
 export type PurchaseFilters = {
   status?: string;

@@ -6,7 +6,7 @@ import type {
   ImportMode,
   ImportPreviewResponse,
   ImportValidateResponse,
-} from '@universal-license/core';
+} from '@unilic/core';
 
 /**
  * Import operations (admin)

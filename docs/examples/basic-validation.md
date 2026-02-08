@@ -14,8 +14,8 @@ This example demonstrates:
 ## Complete Implementation
 
 ```typescript
-import { LicenseClient } from '@universal-license/client';
-import { DeviceFingerprint } from '@universal-license/core';
+import { LicenseClient } from '@unilic/client';
+import { DeviceFingerprint } from '@unilic/core';
 
 // Initialize the client
 const client = new LicenseClient({

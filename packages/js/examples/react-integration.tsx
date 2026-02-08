@@ -8,8 +8,8 @@
  */
 
 import React, { useEffect, useState } from 'react';
-import { LicenseClient, DeviceFingerprint } from '@universal-license/client';
-import type { License, ValidateLicenseResponse } from '@universal-license/client';
+import { LicenseClient, DeviceFingerprint } from '@unilic/client';
+import type { License, ValidateLicenseResponse } from '@unilic/client';
 
 // Initialize SDK client (typically in a context provider)
 const licenseClient = new LicenseClient({

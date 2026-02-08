@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { useLicenseContext } from '../context/LicenseContext';
-import type { CreateOrderResponse } from '@universal-license/client';
+import type { CreateOrderResponse } from '@unilic/client';
 
 /**
  * usePurchase Hook

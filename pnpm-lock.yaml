@@ -77,7 +77,7 @@ importers:
 
   packages/js:
     dependencies:
-      '@universal-license/core':
+      '@unilic/core':
         specifier: ^0.1.0
         version: link:../core
       axios:
@@ -135,7 +135,7 @@ importers:
 
   packages/react:
     dependencies:
-      '@universal-license/core':
+      '@unilic/core':
         specifier: ^0.1.0
         version: link:../core
     devDependencies:
@@ -163,7 +163,7 @@ importers:
       '@types/react-dom':
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.13)
-      '@universal-license/client':
+      '@unilic/client':
         specifier: ^0.1.0
         version: link:../js
       happy-dom:

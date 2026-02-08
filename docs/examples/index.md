@@ -195,7 +195,7 @@ const purchase = await client.purchases.completePurchase({
 **Code example:**
 
 ```javascript
-import { verifySignature } from '@universal-license/core';
+import { verifySignature } from '@unilic/core';
 
 // Get cached validation
 const cachedValid = client.validation.isValidCached(licenseKey);
@@ -441,7 +441,7 @@ describe('License Validation', () => {
 
 ```typescript
 // Mock the license server
-vi.mock('@universal-license/client', () => ({
+vi.mock('@unilic/client', () => ({
   LicenseClient: class MockClient {
     validation = {
       validate: () => {

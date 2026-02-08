@@ -2,8 +2,7 @@
 
 The SDK is TypeScript-first.
 
-Most shared types live in `@universal-license/core` and are re-exported by
-`@universal-license/client` for convenience.
+Most shared types live in `@unilic/core` and are re-exported by `@unilic/client` for convenience.
 
 ## Where to import from
 
@@ -16,13 +15,13 @@ import type {
   ValidateLicenseResponse,
   Product,
   SubscriptionPlan,
-} from '@universal-license/client';
+} from '@unilic/client';
 ```
 
 If you only need pure types/utilities (and not the HTTP client), import from core:
 
 ```ts
-import type { License, LicenseTier } from '@universal-license/core';
+import type { License, LicenseTier } from '@unilic/core';
 ```
 
 ## Key types you will use often

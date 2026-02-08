@@ -1,5 +1,5 @@
 {
-  "name": "@universal-license/core",
+  "name": "@unilic/core",
   "version": "0.1.0",
   "description": "Core types and utilities for Universal License SDK",
   "main": "dist/index.js",
