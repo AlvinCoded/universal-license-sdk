@@ -1,0 +1,39 @@
+# Labels PRs automatically based on changed paths.
+# Used by .github/workflows/labeler.yml
+
+"type: docs":
+  - changed-files:
+      - any-glob-to-any-file:
+          - docs/**
+
+"pkg: js":
+  - changed-files:
+      - any-glob-to-any-file:
+          - packages/js/**
+
+"pkg: react":
+  - changed-files:
+      - any-glob-to-any-file:
+          - packages/react/**
+
+"pkg: php":
+  - changed-files:
+      - any-glob-to-any-file:
+          - packages/php/**
+
+"pkg: core":
+  - changed-files:
+      - any-glob-to-any-file:
+          - packages/core/**
+
+"area: ci":
+  - changed-files:
+      - any-glob-to-any-file:
+          - .github/**
+          - scripts/**
+          - tools/**
+          - pnpm-workspace.yaml
+          - lerna.json
+          - package.json
+          - pnpm-lock.yaml
+          - tsconfig.json

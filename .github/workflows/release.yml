@@ -1,0 +1,92 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Configure npm auth
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > "$HOME/.npmrc"
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create version PR or publish
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          version: pnpm run version-packages
+          publish: pnpm run release
+          commit: "chore(sdk): version packages"
+          title: "chore(sdk): version packages"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish PHP package (subtree split)
+        if: steps.changesets.outputs.published == 'true'
+        shell: bash
+        env:
+          PHP_SPLIT_REPO: ${{ secrets.PHP_SPLIT_REPO }}
+          PHP_SPLIT_TOKEN: ${{ secrets.PHP_SPLIT_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          if [[ -z "${PHP_SPLIT_REPO}" || -z "${PHP_SPLIT_TOKEN}" ]]; then
+            echo "PHP split repo secrets not configured; skipping PHP publish."
+            exit 0
+          fi
+
+          PHP_VERSION="$(node -p "require('./packages/php/composer.json').version || ''")"
+          if [[ -z "${PHP_VERSION}" ]]; then
+            echo "composer.json is missing a version field at packages/php/composer.json"
+            echo "Add \"version\" (e.g. 0.1.0), or ensure the version sync script runs during versioning."
+            exit 1
+          fi
+          echo "Releasing PHP split repo tag: v${PHP_VERSION}"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git subtree split --prefix packages/php --branch php-split
+
+          git remote add php-origin "https://x-access-token:${PHP_SPLIT_TOKEN}@github.com/${PHP_SPLIT_REPO}.git"
+          git push php-origin php-split:main --force
+
+          if git ls-remote --tags php-origin "refs/tags/v${PHP_VERSION}" | grep -q .; then
+            echo "Tag v${PHP_VERSION} already exists in ${PHP_SPLIT_REPO}; skipping tag push."
+            exit 0
+          fi
+
+          git checkout php-split
+          git tag "v${PHP_VERSION}"
+          git push php-origin "v${PHP_VERSION}"

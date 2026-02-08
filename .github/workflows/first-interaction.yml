@@ -1,0 +1,32 @@
+name: First Interaction
+
+on:
+  issues:
+    types: [opened]
+  pull_request_target:
+    types: [opened]
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/first-interaction@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-message: |
+            Thanks for opening your first issue here — we’ll take a look soon.
+
+            If you can, please include:
+            - package (js/react/php/core)
+            - SDK version
+            - minimal reproduction
+          pr-message: |
+            Thanks for your first pull request — really appreciate it!
+
+            A couple quick checks that help reviews go fast:
+            - run `pnpm run typecheck` / `pnpm run test`
+            - add a Changeset if this affects published JS/React/Core packages

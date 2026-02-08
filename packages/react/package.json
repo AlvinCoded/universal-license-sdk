@@ -1,0 +1,72 @@
+{
+  "name": "@universal-license/react",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "React hooks and components for Universal License SDK",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "rollup -c rollup.config.js",
+    "dev": "rollup -c rollup.config.js -w",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "typecheck": "tsc -p tsconfig.typecheck.json --noEmit",
+    "clean": "rimraf dist"
+  },
+  "keywords": [
+    "react",
+    "hooks",
+    "license",
+    "subscription",
+    "saas"
+  ],
+  "author": "Found CTRL",
+  "license": "MIT",
+  "dependencies": {
+    "@universal-license/core": "^0.1.0"
+  },
+  "peerDependencies": {
+    "@universal-license/client": "^0.1.0",
+    "react": "^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^29.0.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-typescript": "^12.3.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/react": "^19.2.13",
+    "@types/react-dom": "^19.2.3",
+    "@universal-license/client": "^0.1.0",
+    "happy-dom": "^20.5.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "rollup": "^4.57.1",
+    "rollup-plugin-dts": "^6.3.0",
+    "tslib": "^2.8.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alvincoded/universal-license-sdk",
+    "directory": "packages/react"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

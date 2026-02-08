@@ -1,0 +1,72 @@
+name: SDK Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Validate PHP package scaffold
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+
+          const phpDir = path.join(process.cwd(), 'packages', 'php');
+          const requiredPaths = ['composer.json', 'src', 'LICENSE', 'README.md', 'phpunit.xml'];
+
+          const missingPaths = requiredPaths.filter((p) => !fs.existsSync(path.join(phpDir, p)));
+          if (missingPaths.length) {
+            console.error(`packages/php is missing required paths: ${missingPaths.join(', ')}`);
+            process.exit(1);
+          }
+
+          const composerPath = path.join(phpDir, 'composer.json');
+          const composer = JSON.parse(fs.readFileSync(composerPath, 'utf8'));
+
+          const requiredKeys = ['name', 'description', 'type', 'license', 'require', 'autoload', 'version'];
+          const missingKeys = requiredKeys.filter((k) => !(k in composer));
+          if (missingKeys.length) {
+            console.error(`packages/php/composer.json is missing required keys: ${missingKeys.join(', ')}`);
+            process.exit(1);
+          }
+
+          const psr4 = composer.autoload?.['psr-4'] ?? {};
+          if (psr4['UniversalLicense\\'] !== 'src/') {
+            console.error('packages/php/composer.json autoload.psr-4 must map "UniversalLicense\\" to "src/"');
+            process.exit(1);
+          }
+
+          console.log(`PHP package scaffold OK: ${composer.name}@${composer.version}`);
+          NODE
+
+      - name: Typecheck
+        run: pnpm run typecheck
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Test
+        run: pnpm run test
+
+      - name: Lint
+        run: pnpm run lint
+
+      - name: Docs build
+        run: pnpm run docs:build

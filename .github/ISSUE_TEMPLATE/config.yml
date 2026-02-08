@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://github.com/AlvinCoded/universal-license-sdk/tree/main/docs
+    about: Read the docs for installation, usage, and troubleshooting.
+  - name: Security report
+    url: https://github.com/AlvinCoded/universal-license-sdk/security/policy
+    about: Please report security vulnerabilities privately.

@@ -1,0 +1,6 @@
+/vendor/
+/coverage/
+/.phpunit.cache
+.env.testing
+composer.lock
+phpunit.xml.bak

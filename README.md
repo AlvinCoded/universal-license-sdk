@@ -1,0 +1,123 @@
+# Universal License SDK
+
+Multi-language client SDK for Universal License Server.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-18+-green)](https://nodejs.org/)
+
+## 📦 Packages
+
+This monorepo contains multiple packages for different languages and frameworks:
+
+| Package                                      | Description                | Version                                                                                                                        | Docs                           |
+| -------------------------------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------ |
+| [@universal-license/core](packages/core)     | Shared types and utilities | [![npm](https://img.shields.io/npm/v/@universal-license/core)](https://www.npmjs.com/package/@universal-license/core)          | [📖](packages/core/README.md)  |
+| [@universal-license/client](packages/js)     | JavaScript/TypeScript SDK  | [![npm](https://img.shields.io/npm/v/@universal-license/client)](https://www.npmjs.com/package/@universal-license/client)      | [📖](packages/js/README.md)    |
+| [@universal-license/react](packages/react)   | React hooks and components | [![npm](https://img.shields.io/npm/v/@universal-license/react)](https://www.npmjs.com/package/@universal-license/react)        | [📖](packages/react/README.md) |
+| [universal-license-php-client](packages/php) | PHP SDK                    | [![Packagist](https://img.shields.io/packagist/v/universal-license-php)](https://packagist.org/packages/universal-license-php) | [📖](packages/php/README.md)   |
+
+## Quick Start
+
+### JavaScript/TypeScript
+
+```bash
+npm install @universal-license/client
+# or
+pnpm add @universal-license/client
+```
+
+```typescript
+import { LicenseClient, DeviceFingerprint } from '@universal-license/client';
+
+const client = new LicenseClient({
+  baseUrl: 'https://your-license-server.com/api',
+});
+
+// Validate a license
+const result = await client.validate({
+  licenseKey: 'PROD-ORG-2025-XXXX-XXXX-XXXX',
+  deviceId: await DeviceFingerprint.generate(),
+});
+
+if (result.valid) {
+  console.log('License is valid!', result.license);
+}
+```
+
+### React
+
+```bash
+npm install @universal-license/react @universal-license/client
+```
+
+```tsx
+import { LicenseProvider, useLicenseValidation } from '@universal-license/react';
+
+function App() {
+  return (
+    <LicenseProvider config={{ baseUrl: 'https://your-license-server.com/api' }}>
+      <OnboardingPage />
+    </LicenseProvider>
+  );
+}
+
+function OnboardingPage() {
+  const { validate, validation, loading } = useLicenseValidation();
+
+  const handleSubmit = (key: string) => {
+    validate(key);
+  };
+
+  return (/* Your UI */);
+}
+```
+
+## 📚 Documentation
+
+- Start here: [docs/getting-started.md](docs/getting-started.md)
+- API reference index: [docs/api/index.md](docs/api/index.md)
+
+## 🏗️ Development
+
+This is a **monorepo** managed with [pnpm workspaces](https://pnpm.io/workspaces) (+ Lerna).
+
+```bash
+pnpm install
+pnpm run build
+pnpm run test
+pnpm run typecheck
+pnpm run lint
+```
+
+### Testing Locally
+
+```bash
+# In this repo
+pnpm run link:local
+
+# In your app (choose one)
+npm link @universal-license/client
+pnpm link --global @universal-license/client
+```
+
+Unlink:
+
+```bash
+npm unlink @universal-license/client
+pnpm unlink --global @universal-license/client
+```
+
+## 🤝 Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+- 🐛 [Report Issues](https://github.com/alvincoded/universal-license-sdk/issues)
+- 💬 [Discussions](https://github.com/alvincoded/universal-license-sdk/discussions)
+<!-- - 📖 [Documentation](https://docs.licensesdk.com) (coming soon...)-->

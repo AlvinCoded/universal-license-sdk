@@ -1,0 +1,91 @@
+{
+  "name": "universal-license-sdk",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "description": "The Multi-language Client SDK for Universal License Server",
+  "author": "Alvin Panford",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alvincoded/universal-license-sdk"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "build": "pnpm -r --filter @universal-license/core --filter @universal-license/client --filter @universal-license/react --workspace-concurrency=1 run build",
+    "build:core": "cd packages/core && pnpm run build",
+    "build:js": "cd packages/js && pnpm run build",
+    "build:react": "cd packages/react && pnpm run build",
+    "test": "pnpm -r --filter @universal-license/core --filter @universal-license/client --filter @universal-license/react run test",
+    "test:watch": "pnpm --filter @universal-license/core --filter @universal-license/client --filter @universal-license/react -r run test:watch",
+    "test:coverage": "pnpm --filter @universal-license/core --filter @universal-license/client --filter @universal-license/react -r run test:coverage",
+    "lint": "pnpm -r --filter @universal-license/core --filter @universal-license/client --filter @universal-license/react run lint",
+    "lint:fix": "pnpm -r --filter @universal-license/core --filter @universal-license/client --filter @universal-license/react run lint:fix",
+    "lint-staged": "lint-staged",
+    "typecheck": "pnpm -r --filter @universal-license/core --filter @universal-license/client --filter @universal-license/react run typecheck",
+    "clean": "pnpm -r --filter @universal-license/core --filter @universal-license/client --filter @universal-license/react run clean",
+    "clean:deep": "pnpm run clean && rimraf node_modules",
+    "dev": "pnpm -r --filter @universal-license/core --filter @universal-license/client --filter @universal-license/react --parallel run dev",
+    "dev:js": "pnpm --filter @universal-license/client run dev",
+    "dev:react": "pnpm --filter @universal-license/react run dev",
+    "link:local": "pnpm run build && pnpm -r --filter @universal-license/core --filter @universal-license/client --filter @universal-license/react exec npm link",
+    "version": "pnpm run version-packages",
+    "publish": "pnpm run release",
+    "prepare": "node -e \"const fs=require('fs'); const {execSync}=require('child_process'); if (fs.existsSync('.git')) execSync('pnpm exec husky', { stdio: 'inherit' });\"",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "audit:endpoints": "node tools/endpoint-audit.mjs",
+    "audit:endpoints:strict": "node tools/endpoint-audit.mjs --strict",
+    "changeset": "changeset",
+    "changeset:status": "changeset status",
+    "version-packages": "changeset version && node scripts/sync-internal-deps.mjs && node scripts/sync-php-composer-version.mjs",
+    "release": "pnpm run build && changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/changelog-git": "^0.2.1",
+    "@changesets/cli": "^2.29.8",
+    "@eslint/eslintrc": "^3.3.3",
+    "@eslint/js": "^9.39.2",
+    "@types/node": "^25.2.2",
+    "@typescript-eslint/eslint-plugin": "^8.54.0",
+    "@typescript-eslint/parser": "^8.54.0",
+    "eslint": "^9.39.2",
+    "husky": "^9.1.7",
+    "lerna": "^9.0.3",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.8.1",
+    "rimraf": "^6.1.2",
+    "typescript": "^5.9.3",
+    "vitepress": "^1.6.4",
+    "vue": "^3.5.27"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "keywords": [
+    "license",
+    "license-management",
+    "subscription",
+    "saas",
+    "sdk",
+    "client",
+    "api",
+    "typescript",
+    "javascript",
+    "react"
+  ],
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  }
+}

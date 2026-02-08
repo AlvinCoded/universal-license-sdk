@@ -1,0 +1,37 @@
+name: Documentation issue
+description: Report incorrect, missing, or unclear docs
+title: "docs: "
+labels: ["type: docs"]
+body:
+  - type: textarea
+    id: location
+    attributes:
+      label: Where is the doc issue?
+      description: Link to the page or file path in /docs.
+      placeholder: e.g. docs/installation/react.md or https://...
+    validations:
+      required: true
+
+  - type: textarea
+    id: issue
+    attributes:
+      label: What’s wrong?
+      description: Describe the problem and what you expected to see.
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested fix (optional)
+      description: Proposed text/code snippet.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I confirmed this doc issue exists on the latest main branch
+          required: true

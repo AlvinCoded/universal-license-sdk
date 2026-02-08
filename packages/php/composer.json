@@ -1,0 +1,72 @@
+{
+  "name": "universal-license/php-client",
+  "version": "0.1.0",
+  "description": "PHP client SDK for Universal License Server - Works with Laravel, Symfony, WordPress, and vanilla PHP",
+  "type": "library",
+  "keywords": [
+    "license",
+    "license-management",
+    "subscription",
+    "saas",
+    "laravel",
+    "symfony",
+    "wordpress",
+    "php"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Alvin Panford"
+    }
+  ],
+  "require": {
+    "php": "^8.2",
+    "ext-json": "*",
+    "ext-curl": "*",
+    "guzzlehttp/guzzle": "^7.8"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^12.0",
+    "laravel/framework": "^12.0",
+    "mockery/mockery": "^1.6.12",
+    "phpstan/phpstan": "^2.0",
+    "friendsofphp/php-cs-fixer": "^3.93"
+  },
+  "suggest": {
+    "laravel/framework": "For Laravel integration (^12.0)",
+    "symfony/http-kernel": "For Symfony integration (^6.0|^7.0)",
+    "illuminate/cache": "For Laravel cache support"
+  },
+  "autoload": {
+    "psr-4": {
+      "UniversalLicense\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "UniversalLicense\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "UniversalLicense\\Laravel\\LicenseServiceProvider"
+      ],
+      "aliases": {
+        "License": "UniversalLicense\\Laravel\\Facades\\License"
+      }
+    }
+  },
+  "scripts": {
+    "test": "phpunit",
+    "test-coverage": "phpunit --coverage-html coverage",
+    "phpstan": "phpstan analyse src --level=8",
+    "cs-fix": "php-cs-fixer fix src"
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true
+  }
+}
