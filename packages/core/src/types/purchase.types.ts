@@ -71,6 +71,7 @@ export interface CreateOrderResponse {
     status: PaymentStatus | string;
   };
   organization: {
+    orgId?: number;
     orgCode: string;
     orgName: string;
   };
@@ -104,6 +105,55 @@ export interface CompletePurchaseResponse {
     ownerName: string;
   };
 }
+
+/**
+ * Start Trial Request
+ * POST /api/purchases/start-trial
+ */
+export interface StartTrialRequest {
+  planCode: string;
+  organizationData: {
+    orgName: string;
+    ownerName: string;
+    ownerEmail: string;
+    orgType?: string;
+    address?: string;
+    phone?: string;
+    email?: string;
+    country?: string;
+    region?: string;
+  };
+  deviceFingerprint?: string | null;
+  metadata?: Record<string, any>;
+}
+
+/**
+ * Start Trial Response
+ * Matches backend response from /api/purchases/start-trial
+ */
+export type StartTrialResponse =
+  | {
+      started: false;
+      eligible: false;
+      reason?: string;
+    }
+  | {
+      started: true;
+      eligible: true;
+      trialDays: number;
+      trialEnd: string;
+      organization: {
+        orgId: number;
+        orgCode: string;
+        orgName: string;
+      };
+      license: {
+        licenseKey: string;
+        tier: string;
+        expiresAt: string;
+        status: string;
+      };
+    };
 
 /**
  * Purchase Filters

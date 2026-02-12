@@ -5,6 +5,8 @@ import type {
   PurchaseOrder,
   CompletePurchaseRequest,
   CompletePurchaseResponse,
+  StartTrialRequest,
+  StartTrialResponse,
 } from '@unilic/core';
 import { API_ENDPOINTS } from '@unilic/core';
 
@@ -86,6 +88,21 @@ export class PurchaseModule {
   ): Promise<CompletePurchaseResponse> {
     return this.http.post<CompletePurchaseResponse>(
       API_ENDPOINTS.PURCHASES.COMPLETE,
+      request,
+      this.buildIdempotencyConfig(options)
+    );
+  }
+
+  /**
+   * Start a free trial and issue a time-limited trial license.
+   * POST /api/purchases/start-trial
+   */
+  async startTrial(
+    request: StartTrialRequest,
+    options?: { idempotencyKey?: string }
+  ): Promise<StartTrialResponse> {
+    return this.http.post<StartTrialResponse>(
+      API_ENDPOINTS.PURCHASES.START_TRIAL,
       request,
       this.buildIdempotencyConfig(options)
     );

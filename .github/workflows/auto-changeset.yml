@@ -1,0 +1,118 @@
+name: Auto Changeset
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: auto-changeset-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  auto-changeset:
+    name: Auto-generate changeset
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.head.repo.full_name == github.repository
+
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Detect bump label
+        id: bump
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const labels = (context.payload.pull_request.labels || []).map(l => l.name);
+            const bump = labels.includes('release:major')
+              ? 'major'
+              : labels.includes('release:minor')
+                ? 'minor'
+                : labels.includes('release:patch')
+                  ? 'patch'
+                  : '';
+            core.setOutput('bump', bump);
+            core.setOutput('labels', JSON.stringify(labels));
+
+      - name: Generate or remove auto changeset
+        env:
+          BASE_REF: ${{ github.base_ref }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          BUMP: ${{ steps.bump.outputs.bump }}
+        run: |
+          set -euo pipefail
+
+          AUTO_FILE=".changeset/auto-pr-${PR_NUMBER}.md"
+
+          git fetch origin "${BASE_REF}:${BASE_REF}"
+          CHANGED_FILES=$(git diff --name-only "origin/${BASE_REF}...HEAD")
+
+          mkdir -p .changeset
+
+          # Identify whether there are any manual changesets already.
+          MANUAL_CHANGESET_COUNT=$(ls -1 .changeset/*.md 2>/dev/null | grep -vE '/README\.md$' | grep -vF "${AUTO_FILE}" | wc -l | tr -d ' ')
+
+          if [ "${MANUAL_CHANGESET_COUNT}" != "0" ]; then
+            if [ -f "${AUTO_FILE}" ]; then
+              rm -f "${AUTO_FILE}"
+              git config user.name "github-actions[bot]"
+              git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              git add -A
+              git commit -m "chore: remove auto changeset" || exit 0
+              git push
+            fi
+            echo "Manual changeset present; skipping auto-generation."
+            exit 0
+          fi
+
+          # Detect changed packages (only create a changeset if a package folder changed).
+          PACKAGES=""
+
+          if echo "${CHANGED_FILES}" | grep -qE '^packages/core/'; then
+            PACKAGES="${PACKAGES}\n\"@unilic/core\": ${BUMP:-patch}"
+          fi
+
+          if echo "${CHANGED_FILES}" | grep -qE '^packages/js/'; then
+            PACKAGES="${PACKAGES}\n\"@unilic/client\": ${BUMP:-patch}"
+          fi
+
+          if echo "${CHANGED_FILES}" | grep -qE '^packages/react/'; then
+            PACKAGES="${PACKAGES}\n\"@unilic/react\": ${BUMP:-patch}"
+          fi
+
+          if [ -z "${PACKAGES}" ]; then
+            echo "No changes under packages/core|js|react; no changeset needed."
+            exit 0
+          fi
+
+          if [ -z "${BUMP}" ]; then
+            echo "Missing release label. Add one of: release:patch, release:minor, release:major"
+            exit 1
+          fi
+
+          CONTENT="---${PACKAGES}\n---\n\nAuto-generated changeset for PR #${PR_NUMBER}: ${PR_TITLE}\n"
+
+          if [ -f "${AUTO_FILE}" ] && [ "$(cat "${AUTO_FILE}")" = "${CONTENT}" ]; then
+            echo "Auto changeset already up-to-date."
+            exit 0
+          fi
+
+          printf "%b" "${CONTENT}" > "${AUTO_FILE}"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "${AUTO_FILE}"
+          git commit -m "chore: add changeset" || exit 0
+          git push

@@ -28,10 +28,22 @@ export interface SubscriptionPlan {
   product_id: number;
   plan_code: string;
   plan_name: string;
-  tier: 'standard' | 'pro' | 'enterprise';
+  tier: 'free' | 'standard' | 'pro' | 'enterprise';
+  billing_type: 'subscription' | 'one_time';
   duration_days: number;
   max_users?: number;
   features: Record<string, boolean>;
+
+  // Trial settings
+  trial_enabled?: boolean;
+  trial_days?: number | null;
+
+  // Payment/gateway controls
+  allowed_gateways?: Array<'stripe' | 'paystack'> | null;
+
+  // Quotas/limits (server-defined)
+  quotas?: Record<string, any>;
+
   price_amount: number;
   price_currency: string;
   is_active: boolean;
@@ -69,10 +81,15 @@ export interface CreatePlanRequest {
   productId: number;
   planCode: string;
   planName: string;
-  tier: 'standard' | 'pro' | 'enterprise';
+  tier: 'free' | 'standard' | 'pro' | 'enterprise';
+  billingType?: 'subscription' | 'one_time';
   durationDays: number;
   maxUsers?: number;
   features: Record<string, boolean>;
+  trialEnabled?: boolean;
+  trialDays?: number | null;
+  allowedGateways?: Array<'stripe' | 'paystack'> | null;
+  quotas?: Record<string, any>;
   priceAmount: number;
   priceCurrency: string;
 }
@@ -84,10 +101,15 @@ export interface CreatePlanRequest {
 export interface UpdatePlanRequest {
   planCode?: string;
   planName?: string;
-  tier?: 'standard' | 'pro' | 'enterprise';
+  tier?: 'free' | 'standard' | 'pro' | 'enterprise';
+  billingType?: 'subscription' | 'one_time';
   durationDays?: number;
   maxUsers?: number;
   features?: Record<string, boolean>;
+  trialEnabled?: boolean;
+  trialDays?: number | null;
+  allowedGateways?: Array<'stripe' | 'paystack'> | null;
+  quotas?: Record<string, any>;
   priceAmount?: number;
   priceCurrency?: string;
   isActive?: boolean;

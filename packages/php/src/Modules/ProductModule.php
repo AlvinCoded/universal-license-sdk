@@ -67,7 +67,8 @@ class ProductModule
      */
     public function get(string $productCode): Product
     {
-        $response = $this->http->get("/products/{$productCode}");
+        $safeProductCode = rawurlencode($productCode);
+        $response = $this->http->get("/products/{$safeProductCode}");
         return Product::fromArray($response->toArray());
     }
     
@@ -93,7 +94,8 @@ class ProductModule
      */
     public function getPlans(string $productCode): array
     {
-        $response = $this->http->get("/products/{$productCode}/plans");
+        $safeProductCode = rawurlencode($productCode);
+        $response = $this->http->get("/products/{$safeProductCode}/plans");
         $data = $response->toArray();
         
         return array_map(
@@ -101,7 +103,27 @@ class ProductModule
             $data['plans'] ?? []
         );
     }
-    
+
+    /**
+     * Get public active subscription plans for a product (no app key required)
+     *
+     * Calls the public endpoint intended for public sites.
+     *
+     * @param string $productCode Product code
+     * @return array<SubscriptionPlan>
+     */
+    public function getPublicPlans(string $productCode): array
+    {
+        $safeProductCode = rawurlencode($productCode);
+        $response = $this->http->get("/public/products/{$safeProductCode}/plans");
+        $data = $response->toArray();
+
+        return array_map(
+            fn($item) => SubscriptionPlan::fromArray($item),
+            $data['plans'] ?? []
+        );
+    }
+
     /**
      * Get specific plan by code
      * 
@@ -124,7 +146,8 @@ class ProductModule
      */
     public function getPlan(string $planCode): SubscriptionPlan
     {
-        $response = $this->http->get("/plans/{$planCode}");
+        $safePlanCode = rawurlencode($planCode);
+        $response = $this->http->get("/plans/{$safePlanCode}");
         return SubscriptionPlan::fromArray($response->toArray());
     }
     

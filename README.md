@@ -10,12 +10,12 @@ Multi-language client SDK for Universal License Server.
 
 This monorepo contains multiple packages for different languages and frameworks:
 
-| Package                                      | Description                | Version                                                                                                                        | Docs                           |
-| -------------------------------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------ |
-| [@unilic/core](packages/core)                | Shared types and utilities | [![npm](https://img.shields.io/npm/v/@unilic/core)](https://www.npmjs.com/package/@unilic/core)                                | [📖](packages/core/README.md)  |
-| [@unilic/client](packages/js)                | JavaScript/TypeScript SDK  | [![npm](https://img.shields.io/npm/v/@unilic/client)](https://www.npmjs.com/package/@unilic/client)                            | [📖](packages/js/README.md)    |
-| [@unilic/react](packages/react)              | React hooks and components | [![npm](https://img.shields.io/npm/v/@unilic/react)](https://www.npmjs.com/package/@unilic/react)                              | [📖](packages/react/README.md) |
-| [universal-license-php-client](packages/php) | PHP SDK                    | [![Packagist](https://img.shields.io/packagist/v/universal-license-php)](https://packagist.org/packages/universal-license-php) | [📖](packages/php/README.md)   |
+| Package                                      | Description                | Version                                                                                                                                      | Docs                           |
+| -------------------------------------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| [@unilic/core](packages/core)                | Shared types and utilities | [![npm](https://img.shields.io/npm/v/@unilic/core)](https://www.npmjs.com/package/@unilic/core)                                              | [📖](packages/core/README.md)  |
+| [@unilic/client](packages/js)                | JavaScript/TypeScript SDK  | [![npm](https://img.shields.io/npm/v/@unilic/client)](https://www.npmjs.com/package/@unilic/client)                                          | [📖](packages/js/README.md)    |
+| [@unilic/react](packages/react)              | React hooks and components | [![npm](https://img.shields.io/npm/v/@unilic/react)](https://www.npmjs.com/package/@unilic/react)                                            | [📖](packages/react/README.md) |
+| [universal-license-php-client](packages/php) | PHP SDK                    | [![Packagist](https://img.shields.io/packagist/v/universal-license-php-client)](https://packagist.org/packages/universal-license-php-client) | [📖](packages/php/README.md)   |
 
 ## Quick Start
 
@@ -108,16 +108,10 @@ npm unlink @unilic/client
 pnpm unlink --global @unilic/client
 ```
 
-## 🤝 Contributing
+## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
 
-## 📄 License
+## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🆘 Support
-
-- 🐛 [Report Issues](https://github.com/alvincoded/universal-license-sdk/issues)
-- 💬 [Discussions](https://github.com/alvincoded/universal-license-sdk/discussions)
-<!-- - 📖 [Documentation](https://docs.licensesdk.com) (coming soon...)-->
+MIT License - see the [LICENSE](LICENSE) file for details.

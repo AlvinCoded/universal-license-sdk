@@ -77,13 +77,27 @@ export class ProductModule {
     }
 
     const response = await this.http.get<{ plans: SubscriptionPlan[] }>(
-      API_ENDPOINTS.PURCHASES.PLANS(productCode)
+      API_ENDPOINTS.PURCHASES.PLANS(encodeURIComponent(productCode))
     );
 
     // Cache plans (they don't change often)
     if (this.cache && response.plans) {
       await this.cache.storage.set(cacheKey, response.plans, DEFAULT_CONFIG.CACHE_TTL);
     }
+
+    return response.plans;
+  }
+
+  /**
+   * Get active subscription plans for a product via the no-app-key public route.
+   * GET /api/public/products/:productCode/plans
+   *
+   * Intended for sites where exposing X-ULS-App-Key is undesirable.
+   */
+  async getPublicPlans(productCode: string): Promise<SubscriptionPlan[]> {
+    const response = await this.http.get<{ plans: SubscriptionPlan[] }>(
+      API_ENDPOINTS.PUBLIC.PRODUCT_PLANS(encodeURIComponent(productCode))
+    );
 
     return response.plans;
   }

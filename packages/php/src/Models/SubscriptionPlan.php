@@ -17,7 +17,14 @@ class SubscriptionPlan
     public int $productId;
     public string $planCode;
     public string $planName;
-    public string $tier; // 'standard' | 'pro' | 'enterprise'
+    public string $tier; // 'free' | 'standard' | 'pro' | 'enterprise'
+    public ?string $billingType; // e.g. 'subscription' | 'one_time'
+    public bool $trialEnabled;
+    public ?int $trialDays;
+    /** @var array<int, string> */
+    public array $allowedGateways;
+    /** @var array<string, mixed> */
+    public array $quotas;
     public int $durationDays;
     public float $priceAmount;
     public string $priceCurrency;
@@ -46,6 +53,14 @@ class SubscriptionPlan
         $plan->planCode = (string) ($data['plan_code'] ?? $data['planCode'] ?? '');
         $plan->planName = (string) ($data['plan_name'] ?? $data['planName'] ?? '');
         $plan->tier = (string) ($data['tier'] ?? 'standard');
+        $plan->billingType = isset($data['billing_type']) || isset($data['billingType'])
+            ? (string) ($data['billing_type'] ?? $data['billingType'])
+            : null;
+
+        $plan->trialEnabled = (bool) ($data['trial_enabled'] ?? $data['trialEnabled'] ?? false);
+        $plan->trialDays = isset($data['trial_days']) || isset($data['trialDays'])
+            ? (int) ($data['trial_days'] ?? $data['trialDays'])
+            : null;
         $plan->durationDays = (int) ($data['duration_days'] ?? $data['durationDays'] ?? 365);
         $plan->priceAmount = (float) ($data['price_amount'] ?? $data['priceAmount'] ?? 0);
         $plan->priceCurrency = (string) ($data['price_currency'] ?? $data['priceCurrency'] ?? 'USD');
@@ -56,6 +71,16 @@ class SubscriptionPlan
         // Parse features
         $features = $data['features'] ?? [];
         $plan->features = is_string($features) ? json_decode($features, true) : (array) $features;
+
+        // Parse allowed gateways
+        $allowedGateways = $data['allowed_gateways'] ?? $data['allowedGateways'] ?? [];
+        $decodedAllowedGateways = is_string($allowedGateways) ? json_decode($allowedGateways, true) : $allowedGateways;
+        $plan->allowedGateways = is_array($decodedAllowedGateways) ? array_values($decodedAllowedGateways) : [];
+
+        // Parse quotas
+        $quotas = $data['quotas'] ?? [];
+        $decodedQuotas = is_string($quotas) ? json_decode($quotas, true) : $quotas;
+        $plan->quotas = is_array($decodedQuotas) ? $decodedQuotas : [];
         
         $plan->isActive = (bool) ($data['is_active'] ?? $data['isActive'] ?? true);
         $plan->createdAt = new \DateTime($data['created_at'] ?? $data['createdAt'] ?? 'now');
@@ -85,11 +110,16 @@ class SubscriptionPlan
             'planCode' => $this->planCode,
             'planName' => $this->planName,
             'tier' => $this->tier,
+            'billingType' => $this->billingType,
+            'trialEnabled' => $this->trialEnabled,
+            'trialDays' => $this->trialDays,
             'durationDays' => $this->durationDays,
             'priceAmount' => $this->priceAmount,
             'priceCurrency' => $this->priceCurrency,
             'maxUsers' => $this->maxUsers,
             'features' => $this->features,
+            'allowedGateways' => $this->allowedGateways,
+            'quotas' => $this->quotas,
             'isActive' => $this->isActive,
             'createdAt' => $this->createdAt->format('c'),
             'updatedAt' => $this->updatedAt->format('c'),

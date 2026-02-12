@@ -248,7 +248,48 @@ class PurchaseModule
      */
     public function getAvailablePlans(string $productCode): array
     {
-        $response = $this->http->get("/purchases/plans/{$productCode}");
+        $safeProductCode = rawurlencode($productCode);
+        $response = $this->http->get("/purchases/plans/{$safeProductCode}");
         return $response->get('plans', []);
+    }
+
+    /**
+     * Start a trial (no payment)
+     *
+     * Starts a time-limited trial license for an eligible organization.
+     *
+     * @param array{
+     *   planCode: string,
+     *   organizationData: array{
+     *     orgName: string,
+     *     ownerName: string,
+     *     ownerEmail: string,
+     *     orgType?: string,
+     *     address?: string,
+     *     phone?: string,
+     *     country?: string
+     *   },
+     *   metadata?: array
+     * } $data
+     *
+     * @return array{
+     *   started: bool,
+     *   eligible: bool,
+     *   reason?: string,
+     *   trialDays?: int,
+     *   trialEnd?: string,
+     *   organization?: array,
+     *   license?: array
+     * }
+     */
+    public function startTrial(array $data, ?string $idempotencyKey = null): array
+    {
+        $options = [];
+        if ($idempotencyKey) {
+            $options['headers'] = ['Idempotency-Key' => $idempotencyKey];
+        }
+
+        $response = $this->http->post('/purchases/start-trial', $data, $options);
+        return $response->toArray();
     }
 }

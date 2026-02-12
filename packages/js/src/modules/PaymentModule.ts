@@ -11,11 +11,14 @@ import type {
   CreatePortalSessionResponse,
   CreateSubscriptionRequest,
   CreateSubscriptionResponse,
+  SubscriptionLicenseResponse,
   SubscriptionDetailsResponse,
   TrialEligibilityResponse,
   TrialStatsResponse,
   WebhookResponse,
 } from '@unilic/core';
+
+import { LicenseError, NetworkError } from '../errors';
 
 /**
  * Payment/Stripe operations
@@ -100,6 +103,63 @@ export class PaymentModule {
     return this.http.get<SubscriptionDetailsResponse>(
       `/payment/subscription/${encodeURIComponent(subscriptionId)}`
     );
+  }
+
+  /** GET /api/payment/subscription-license/:subscriptionId */
+  async getSubscriptionLicense(subscriptionId: string): Promise<SubscriptionLicenseResponse> {
+    return this.http.get<SubscriptionLicenseResponse>(
+      `/payment/subscription-license/${encodeURIComponent(subscriptionId)}`
+    );
+  }
+
+  /**
+   * Poll until a subscription license is available.
+   * Useful after client-side confirmation, where the backend may issue the license asynchronously.
+   */
+  async waitForSubscriptionLicense(
+    subscriptionId: string,
+    options?: { timeoutMs?: number; intervalMs?: number; signal?: AbortSignal }
+  ): Promise<SubscriptionLicenseResponse> {
+    const timeoutMs = options?.timeoutMs ?? 60_000;
+    const intervalMs = options?.intervalMs ?? 2_000;
+    const startedAt = Date.now();
+
+    const sleep = (ms: number) =>
+      new Promise<void>((resolve, reject) => {
+        const id = setTimeout(() => resolve(), ms);
+        if (options?.signal) {
+          const onAbort = () => {
+            clearTimeout(id);
+            reject(new Error('Aborted'));
+          };
+          if (options.signal.aborted) return onAbort();
+          options.signal.addEventListener('abort', onAbort, { once: true });
+        }
+      });
+
+    while (true) {
+      if (options?.signal?.aborted) {
+        throw new Error('Aborted');
+      }
+
+      try {
+        return await this.getSubscriptionLicense(subscriptionId);
+      } catch (e) {
+        const elapsed = Date.now() - startedAt;
+        if (elapsed >= timeoutMs) {
+          throw e;
+        }
+
+        // Backend returns 404 until the license row exists.
+        // Also tolerate transient network issues while polling.
+        if (e instanceof LicenseError || e instanceof NetworkError) {
+          await sleep(intervalMs);
+          continue;
+        }
+
+        throw e;
+      }
+    }
   }
 
   /** POST /api/payment/webhook */

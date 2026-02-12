@@ -38,6 +38,9 @@ export const PAYMENT_STATUS = {
 
 // API endpoints (relative paths)
 export const API_ENDPOINTS = {
+  PUBLIC: {
+    PRODUCT_PLANS: (productCode: string) => `/public/products/${productCode}/plans`,
+  },
   LICENSES: {
     BASE: '/licenses',
     VALIDATE: '/licenses/validate',
@@ -61,6 +64,7 @@ export const API_ENDPOINTS = {
   PURCHASES: {
     BASE: '/purchases',
     CREATE_ORDER: '/purchases/create-order',
+    START_TRIAL: '/purchases/start-trial',
     COMPLETE: '/purchases/complete-purchase',
     ORDER: (orderId: string) => `/purchases/order/${orderId}`,
     PLANS: (productCode: string) => `/purchases/plans/${productCode}`,

@@ -44,7 +44,7 @@ export function usePurchase() {
         orgType?: string;
       };
       paymentMethod?: string;
-      metadata?: Record<string, any>;
+      metadata?: Record<string, unknown>;
     }) => {
       setLoading(true);
       setError(null);
@@ -53,8 +53,8 @@ export function usePurchase() {
         const result = await client.purchases.createOrder(data);
         setOrder(result.order);
         return result;
-      } catch (err: any) {
-        const errorMessage = err.message || 'Failed to create order';
+      } catch (err: unknown) {
+        const errorMessage = err instanceof Error ? err.message : 'Failed to create order';
         setError(errorMessage);
         throw new Error(errorMessage);
       } finally {
@@ -78,8 +78,39 @@ export function usePurchase() {
         }
 
         return result;
-      } catch (err: any) {
-        const errorMessage = err.message || 'Failed to complete purchase';
+      } catch (err: unknown) {
+        const errorMessage = err instanceof Error ? err.message : 'Failed to complete purchase';
+        setError(errorMessage);
+        throw new Error(errorMessage);
+      } finally {
+        setLoading(false);
+      }
+    },
+    [client]
+  );
+
+  const startTrial = useCallback(
+    async (data: {
+      planCode: string;
+      organizationData: {
+        orgName: string;
+        ownerName: string;
+        ownerEmail: string;
+        phone?: string;
+        address?: string;
+        country?: string;
+        orgType?: string;
+      };
+      deviceFingerprint?: string | null;
+      metadata?: Record<string, unknown>;
+    }) => {
+      setLoading(true);
+      setError(null);
+
+      try {
+        return await client.purchases.startTrial(data);
+      } catch (err: unknown) {
+        const errorMessage = err instanceof Error ? err.message : 'Failed to start trial';
         setError(errorMessage);
         throw new Error(errorMessage);
       } finally {
@@ -95,5 +126,6 @@ export function usePurchase() {
     error,
     createOrder,
     completePurchase,
+    startTrial,
   };
 }

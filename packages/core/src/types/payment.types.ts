@@ -13,13 +13,29 @@ export interface CreateSubscriptionRequest {
   paymentMethodId?: string;
 }
 
+export interface SubscriptionIssuedLicense {
+  licenseKey: string;
+  tier: string;
+  expiresAt: string;
+  status: string;
+}
+
 export interface CreateSubscriptionResponse {
   success: boolean;
   subscriptionId: string;
   clientSecret: string | null;
+  /** Whether the returned clientSecret is for a PaymentIntent or SetupIntent. */
+  intentType?: 'payment' | 'setup' | 'none' | string;
   status: string;
   trialEnd: string | null;
   hasTrial: boolean;
+  /** Present when the subscription flow immediately issued a license (e.g. $0 trial path). */
+  license?: SubscriptionIssuedLicense | null;
+}
+
+/** GET /api/payment/subscription-license/:subscriptionId */
+export interface SubscriptionLicenseResponse {
+  license: SubscriptionIssuedLicense;
 }
 
 export interface CreatePaymentIntentRequest {
