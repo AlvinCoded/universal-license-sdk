@@ -78,7 +78,7 @@ importers:
   packages/js:
     dependencies:
       '@unilic/core':
-        specifier: ^0.1.0
+        specifier: workspace:^0.2.0
         version: link:../core
       axios:
         specifier: ^1.13.4
@@ -136,7 +136,7 @@ importers:
   packages/react:
     dependencies:
       '@unilic/core':
-        specifier: ^0.1.0
+        specifier: workspace:^0.2.0
         version: link:../core
     devDependencies:
       '@rollup/plugin-commonjs':
@@ -164,7 +164,7 @@ importers:
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.13)
       '@unilic/client':
-        specifier: ^0.1.0
+        specifier: workspace:^0.2.0
         version: link:../js
       happy-dom:
         specifier: ^20.5.0

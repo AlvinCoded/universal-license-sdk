@@ -37,7 +37,7 @@ jobs:
           pnpm config set prefer-workspace-packages true --global
 
       - name: Install
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Configure npm auth
         run: |

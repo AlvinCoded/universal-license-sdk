@@ -58,7 +58,7 @@
   },
   "homepage": "https://github.com/alvincoded/universal-license-sdk#readme",
   "dependencies": {
-    "@unilic/core": "^0.2.0",
+    "@unilic/core": "workspace:^0.2.0",
     "axios": "^1.13.4"
   },
   "devDependencies": {

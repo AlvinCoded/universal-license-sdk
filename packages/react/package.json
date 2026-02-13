@@ -33,13 +33,13 @@
     "subscription",
     "saas"
   ],
-  "author": "Found CTRL",
+  "author": "Alvin Panford",
   "license": "MIT",
   "dependencies": {
-    "@unilic/core": "^0.2.0"
+    "@unilic/core": "workspace:^0.2.0"
   },
   "peerDependencies": {
-    "@unilic/client": "^0.2.0",
+    "@unilic/client": "workspace:^0.2.0",
     "react": "^18.0.0 || ^19.0.0"
   },
   "devDependencies": {
@@ -51,7 +51,7 @@
     "@testing-library/react": "^16.3.2",
     "@types/react": "^19.2.13",
     "@types/react-dom": "^19.2.3",
-    "@unilic/client": "^0.2.0",
+    "@unilic/client": "workspace:^0.2.0",
     "happy-dom": "^20.5.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
