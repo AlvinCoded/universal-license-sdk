@@ -37,7 +37,7 @@ jobs:
           pnpm config set prefer-workspace-packages true --global
 
       - name: Install
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       - name: Configure npm auth
         run: |
@@ -117,3 +117,4 @@ jobs:
           git checkout php-split
           git tag "v${PHP_VERSION}"
           git push php-origin "v${PHP_VERSION}"
+
