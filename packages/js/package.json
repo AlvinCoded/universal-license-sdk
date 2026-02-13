@@ -1,6 +1,6 @@
 {
   "name": "@unilic/client",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "description": "JavaScript/TypeScript SDK for Universal License Server - Secure license validation, purchase flows, and subscription management",
   "main": "./dist/index.cjs",
@@ -58,7 +58,7 @@
   },
   "homepage": "https://github.com/alvincoded/universal-license-sdk#readme",
   "dependencies": {
-    "@unilic/core": "^0.1.0",
+    "@unilic/core": "^0.2.0",
     "axios": "^1.13.4"
   },
   "devDependencies": {

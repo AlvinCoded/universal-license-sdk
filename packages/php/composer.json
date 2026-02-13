@@ -1,6 +1,6 @@
 {
   "name": "universal-license/php-client",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "PHP client SDK for Universal License Server - Works with Laravel, Symfony, WordPress, and vanilla PHP",
   "type": "library",
   "keywords": [
