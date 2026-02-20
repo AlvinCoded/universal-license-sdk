@@ -9,6 +9,7 @@ import { PlanModule } from './modules/PlanModule';
 import { RenewalModule } from './modules/RenewalModule';
 import { ValidationModule } from './modules/ValidationModule';
 import { OwnershipModule } from './modules/OwnershipModule';
+import { UsageModule } from './modules/UsageModule';
 import { AuthModule } from './modules/AuthModule';
 import { OrganizationModule } from './modules/OrganizationModule';
 import { ActivityModule } from './modules/ActivityModule';
@@ -97,6 +98,7 @@ export class LicenseClient {
   public readonly plans: PlanModule;
   public readonly renewals: RenewalModule;
   public readonly validation: ValidationModule;
+  public readonly usage: UsageModule;
   public readonly ownership: OwnershipModule;
 
   // Admin & platform modules
@@ -151,6 +153,7 @@ export class LicenseClient {
     this.plans = new PlanModule(this.http);
     this.renewals = new RenewalModule(this.http);
     this.validation = new ValidationModule(this.http, this.cache);
+    this.usage = new UsageModule(this.http);
     this.ownership = new OwnershipModule(this.http);
 
     this.auth = new AuthModule(this.http);

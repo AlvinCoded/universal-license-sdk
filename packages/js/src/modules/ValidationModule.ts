@@ -2,8 +2,9 @@ import type { HttpClient } from '../http/HttpClient';
 import type { LicenseCache } from '../cache/LicenseCache';
 import type { LicenseTier, ValidateLicenseRequest, ValidateLicenseResponse } from '@unilic/core';
 import type { PublicKeySetResponse } from '@unilic/core';
-import { API_ENDPOINTS } from '@unilic/core';
+import { API_ENDPOINTS, sha256 } from '@unilic/core';
 import { DeviceFingerprint } from '@unilic/core';
+import { verifyJwtRs256 } from '../utils/jwt';
 
 /**
  * License validation operations
@@ -44,33 +45,72 @@ export class ValidationModule {
    * ```
    */
   async validate(request: ValidateLicenseRequest): Promise<ValidateLicenseResponse> {
-    // Check cache first (if enabled)
-    if (this.cache) {
-      const cached = await this.cache.getValidation(request.licenseKey, request.deviceId);
+    const cached = this.cache
+      ? await this.cache.getValidation(request.licenseKey, request.deviceId)
+      : null;
 
-      if (cached && cached.valid) {
-        // Verify cached result is still current
-        const license = cached.license;
-        const notExpired = license?.expiresAt ? new Date(license.expiresAt) > new Date() : true;
+    const isCachedUsable = async (value: ValidateLicenseResponse | null): Promise<boolean> => {
+      if (!value?.valid) return false;
 
-        if (notExpired) {
-          return cached;
-        }
+      // License expiration is a hard stop.
+      const license = value.license;
+      const notExpired = license?.expiresAt ? new Date(license.expiresAt) > new Date() : true;
+      if (!notExpired) return false;
+
+      // Offline lease must be present + valid for continued offline usage.
+      const lease = value.offlineLease;
+      if (!lease?.token || !lease.publicKey) return false;
+
+      // Fast-path check on the lease's wall-clock expiresAt (still verify cryptographically below).
+      if (lease.expiresAt && new Date(lease.expiresAt) <= new Date()) return false;
+
+      const verified = await verifyJwtRs256<{
+        exp?: number;
+        typ?: string;
+        licenseKey?: string;
+        deviceIdHash?: string;
+      }>({
+        token: lease.token,
+        publicKey: lease.publicKey,
+      });
+      if (!verified.valid) return false;
+
+      const nowSec = Math.floor(Date.now() / 1000);
+      const exp = typeof verified.payload?.exp === 'number' ? verified.payload.exp : undefined;
+      if (!exp || nowSec >= exp) return false;
+
+      if (verified.payload?.typ !== 'uls-offline-lease') return false;
+      if (verified.payload?.licenseKey !== request.licenseKey) return false;
+
+      const expectedDeviceHash = await sha256(request.deviceId);
+      if (verified.payload?.deviceIdHash !== expectedDeviceHash) return false;
+
+      return true;
+    };
+
+    // Prefer cache if it is still valid.
+    if (cached && (await isCachedUsable(cached))) {
+      return cached;
+    }
+
+    // Perform online validation; on network error, fall back to cached lease.
+    try {
+      const result = await this.http.post<ValidateLicenseResponse>(
+        API_ENDPOINTS.LICENSES.VALIDATE,
+        request
+      );
+
+      if (this.cache && result.valid) {
+        await this.cache.cacheValidation(request.licenseKey, request.deviceId, result);
       }
+
+      return result;
+    } catch (error) {
+      if (cached && (await isCachedUsable(cached))) {
+        return cached;
+      }
+      throw error;
     }
-
-    // Perform validation
-    const result = await this.http.post<ValidateLicenseResponse>(
-      API_ENDPOINTS.LICENSES.VALIDATE,
-      request
-    );
-
-    // Cache the result
-    if (this.cache && result.valid) {
-      await this.cache.cacheValidation(request.licenseKey, request.deviceId, result);
-    }
-
-    return result;
   }
 
   /**
@@ -155,7 +195,37 @@ export class ValidationModule {
     const license = await this.cache.get(licenseKey);
     if (!license) return false;
 
-    return license.status === 'active' && new Date(license.expires_at) > new Date();
+    if (!(license.status === 'active' && new Date(license.expires_at) > new Date())) return false;
+
+    // Require a still-valid offline lease for true offline enforcement.
+    const deviceId = await DeviceFingerprint.generate();
+    const cached = await this.cache.getValidation(licenseKey, deviceId);
+    if (!cached?.valid) return false;
+    const lease = cached.offlineLease;
+    if (!lease?.token || !lease.publicKey) return false;
+
+    const verified = await verifyJwtRs256<{
+      exp?: number;
+      typ?: string;
+      licenseKey?: string;
+      deviceIdHash?: string;
+    }>({
+      token: lease.token,
+      publicKey: lease.publicKey,
+    });
+    if (!verified.valid) return false;
+
+    const nowSec = Math.floor(Date.now() / 1000);
+    const exp = typeof verified.payload?.exp === 'number' ? verified.payload.exp : undefined;
+    if (!exp || nowSec >= exp) return false;
+
+    if (verified.payload?.typ !== 'uls-offline-lease') return false;
+    if (verified.payload?.licenseKey !== licenseKey) return false;
+
+    const expectedDeviceHash = await sha256(deviceId);
+    if (verified.payload?.deviceIdHash !== expectedDeviceHash) return false;
+
+    return true;
   }
 
   /**

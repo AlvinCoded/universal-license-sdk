@@ -44,6 +44,8 @@ export const API_ENDPOINTS = {
   LICENSES: {
     BASE: '/licenses',
     VALIDATE: '/licenses/validate',
+    USAGE_SNAPSHOT: (key: string) => `/licenses/${key}/usage`,
+    USAGE_REPORT: (key: string) => `/licenses/${key}/usage/report`,
     GENERATE: '/licenses/generate',
     STATS: '/licenses/stats/dashboard',
     PUBLIC_KEY: '/licenses/keys/public',

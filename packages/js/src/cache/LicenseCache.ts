@@ -1,5 +1,5 @@
 import type { StorageAdapter } from '../storage';
-import type { License } from '@unilic/core';
+import type { License, ValidateLicenseResponse } from '@unilic/core';
 import { CACHE_KEYS, DEFAULT_CONFIG } from '@unilic/core';
 
 /**
@@ -83,10 +83,26 @@ export class LicenseCache {
   /**
    * Cache validation result
    */
-  async cacheValidation(licenseKey: string, deviceId: string, result: any): Promise<void> {
+  async cacheValidation(
+    licenseKey: string,
+    deviceId: string,
+    result: ValidateLicenseResponse
+  ): Promise<void> {
     try {
       const cacheKey = CACHE_KEYS.VALIDATION(licenseKey, deviceId);
-      await this.storage.set(cacheKey, result, this.ttl);
+
+      // If the server provided an offline lease, keep the cached validation
+      // at least until the lease expires so offline mode stays frictionless.
+      let ttl = this.ttl;
+      const leaseExpiresAt = result?.offlineLease?.expiresAt;
+      if (typeof leaseExpiresAt === 'string') {
+        const remainingMs = new Date(leaseExpiresAt).getTime() - Date.now();
+        if (Number.isFinite(remainingMs) && remainingMs > 0) {
+          ttl = Math.max(0, Math.floor(remainingMs));
+        }
+      }
+
+      await this.storage.set(cacheKey, result, ttl);
 
       // Also cache the license if validation succeeded
       if (result.valid && result.license) {
@@ -100,7 +116,10 @@ export class LicenseCache {
   /**
    * Get cached validation result
    */
-  async getValidation(licenseKey: string, deviceId: string): Promise<any | null> {
+  async getValidation(
+    licenseKey: string,
+    deviceId: string
+  ): Promise<ValidateLicenseResponse | null> {
     try {
       const cacheKey = CACHE_KEYS.VALIDATION(licenseKey, deviceId);
       return await this.storage.get(cacheKey);

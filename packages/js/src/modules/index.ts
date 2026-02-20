@@ -16,3 +16,4 @@ export { PaymentModule } from './PaymentModule';
 export { ImportModule } from './ImportModule';
 export { ExportModule } from './ExportModule';
 export { HealthModule } from './HealthModule';
+export { UsageModule } from './UsageModule';

@@ -81,6 +81,18 @@ export interface ValidateLicenseRequest {
 export interface ValidateLicenseResponse {
   valid: boolean;
 
+  /**
+   * Signed, short-lived authorization token that enables offline usage.
+   * When offline, apps should only allow continued use while this lease is valid.
+   */
+  offlineLease?: {
+    token: string;
+    expiresAt: string;
+    kid: string;
+    publicKey: string;
+    ttlSeconds: number;
+  };
+
   license?: {
     licenseKey: string;
     tier: LicenseTier;
@@ -116,6 +128,47 @@ export interface ValidateLicenseResponse {
   requiredTier?: LicenseTier;
   missingFeatures?: string[];
 }
+
+// ============================================================================
+// USAGE SNAPSHOT (App-side usage / quotas)
+// ============================================================================
+
+/**
+ * POST /api/licenses/:licenseKey/usage
+ * Auth: deviceId + RSA signature from /api/licenses/validate
+ */
+export interface LicenseUsageSnapshotRequest {
+  deviceId: string;
+  signature: string;
+}
+
+export interface LicenseUsageSnapshotResponse {
+  ok: boolean;
+
+  entitlements?: {
+    licenseKey: string;
+    tier: LicenseTier;
+    planCode?: string;
+    planName?: string;
+    features: Record<string, boolean>;
+    maxUsers?: number;
+    quotas?: Record<string, unknown>;
+  };
+
+  usage?: Record<string, number>;
+  updatedAt?: string;
+
+  error?: string;
+}
+
+/**
+ * POST /api/licenses/:licenseKey/usage/report
+ */
+export interface ReportLicenseUsageRequest extends LicenseUsageSnapshotRequest {
+  metrics: Record<string, number>;
+}
+
+export type ReportLicenseUsageResponse = LicenseUsageSnapshotResponse;
 
 // ============================================================================
 // OWNERSHIP & INVITES (App-side onboarding)
@@ -305,7 +358,7 @@ export interface ValidationLog {
   error_message?: string;
   ip_address?: string;
   user_agent?: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
   created_at: string;
 }
 
