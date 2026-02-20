@@ -1,6 +1,6 @@
 {
   "name": "@unilic/react",
-  "version": "2.0.0",
+  "version": "1.1.0",
   "type": "module",
   "description": "React hooks and components for Universal License SDK",
   "main": "./dist/index.cjs",
