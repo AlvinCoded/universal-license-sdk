@@ -28,7 +28,7 @@ export async function verifyJwtRs256<TPayload = unknown>(params: {
   const parts = params.token.split('.');
   if (parts.length !== 3) return { valid: false };
 
-  const [headerB64Url, payloadB64Url, sigB64Url] = parts;
+  const [headerB64Url, payloadB64Url, sigB64Url] = parts as [string, string, string];
 
   let header: unknown;
   let payload: unknown;

@@ -69,8 +69,8 @@ jobs:
           publish: pnpm run release
           commit: "chore(sdk): version packages"
           title: "chore(sdk): version packages"
+          github-token: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Debug Changesets outputs

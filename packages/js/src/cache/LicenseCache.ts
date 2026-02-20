@@ -106,7 +106,7 @@ export class LicenseCache {
 
       // Also cache the license if validation succeeded
       if (result.valid && result.license) {
-        await this.set(licenseKey, result.license);
+        await this.set(licenseKey, result.license as unknown as License);
       }
     } catch (error) {
       console.error('[LicenseCache] Cache validation error:', error);
