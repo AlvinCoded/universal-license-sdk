@@ -1,5 +1,13 @@
 # @unilic/react
 
+## 2.0.0
+
+### Patch Changes
+
+- Updated dependencies [d6d0a14]
+  - @unilic/core@0.3.0
+  - @unilic/client@0.3.0
+
 ## 1.0.0
 
 ### Minor Changes

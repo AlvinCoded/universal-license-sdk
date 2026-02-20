@@ -1,5 +1,16 @@
 # @unilic/client
 
+## 0.3.0
+
+### Minor Changes
+
+- d6d0a14: Add offline lease and usage snapshot support across core and JS packages.
+
+### Patch Changes
+
+- Updated dependencies [d6d0a14]
+  - @unilic/core@0.3.0
+
 ## 0.2.0
 
 ### Minor Changes

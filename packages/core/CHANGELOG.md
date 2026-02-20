@@ -1,5 +1,11 @@
 # @unilic/core
 
+## 0.3.0
+
+### Minor Changes
+
+- d6d0a14: Add offline lease and usage snapshot support across core and JS packages.
+
 ## 0.2.0
 
 ### Minor Changes
